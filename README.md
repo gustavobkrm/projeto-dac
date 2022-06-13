@@ -3,26 +3,26 @@
 Telas a fazer:
 
 ====================================================== <br>
-Tela cliente 
--> login flagado ❌
--> home ❌
--> operaçoes (deposito - saque - transferencia) ❌
--> consultar saldo e extrato ❌
+Tela cliente <br>
+-> login flagado ❌ <br>
+-> home ❌ <br>
+-> operaçoes (deposito - saque - transferencia) ❌ <br>
+-> consultar saldo e extrato ❌ <br>
 
-======================================================
+====================================================== <br>
 
-Tela gerente 
--> login flagado ❌
--> home ❌
--> consultar cliente (tudo) ❌
--> consultar cliente (especifico) ❌
--> consultar 5 melhores clientes ❌
+Tela gerente <br>
+-> login flagado ❌ <br>
+-> home ❌ <br>
+-> consultar cliente (tudo) ❌ <br>
+-> consultar cliente (especifico) ❌ <br>
+-> consultar 5 melhores clientes ❌ <br>
 
-======================================================
+====================================================== <br>
 
-Tela adm
--> login flagado ❌
--> home ❌
--> crud gerente ❌
+Tela adm <br>
+-> login flagado ❌ <br>
+-> home ❌ <br>
+-> crud gerente ❌ <br>
 
-======================================================
+====================================================== 
