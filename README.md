@@ -1,6 +1,6 @@
 # projeto-dac
 
-Telas a fazer:
+<h1> Telas a fazer: </h1>
 
 ====================================================== <br>
 Tela cliente <br>
@@ -26,3 +26,16 @@ Tela adm <br>
 -> crud gerente ❌ <br>
 
 ====================================================== 
+
+
+<h1> Comandos Git </h1>
+<h2>Clonar repositório</h2>
+<p>$ git clone <link do repo> </p>
+
+<h2>Pegar atualizações do remoto</h2> 
+<p>$ git pull </p>
+
+<h2>Enviar alterações locais para o remoto </h2>
+<p>$ git add . </p>
+<p>$ git commit -m "mensagem do commit" </p>
+<p>$ git push </p>
