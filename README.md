@@ -30,7 +30,7 @@ Tela adm <br>
 
 <h1> Comandos Git </h1>
 <h2>Clonar repositório</h2>
-<p>$ git clone <link do repo> </p>
+<p>$ git clone https://github.com/gustavobkrm/projeto-dac.git </p>
 
 <h2>Pegar atualizações do remoto</h2> 
 <p>$ git pull </p>
