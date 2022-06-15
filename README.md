@@ -4,7 +4,7 @@
 
 ====================================================== <br>
 Tela cliente <br>
--> login flagado ❌ <br>
+-> login flagado ⌛ faltando redirect <br>
 -> home ❌ <br>
 -> operaçoes (deposito - saque - transferencia) ❌ <br>
 -> consultar saldo e extrato ❌ <br>
@@ -12,7 +12,7 @@ Tela cliente <br>
 ====================================================== <br>
 
 Tela gerente <br>
--> login flagado ❌ <br>
+-> login flagado ⌛ faltando redirect <br>
 -> home ❌ <br>
 -> consultar cliente (tudo) ❌ <br>
 -> consultar cliente (especifico) ❌ <br>
@@ -21,7 +21,7 @@ Tela gerente <br>
 ====================================================== <br>
 
 Tela adm <br>
--> login flagado ❌ <br>
+-> login flagado ⌛ faltando redirect <br>
 -> home ❌ <br>
 -> crud gerente ❌ <br>
 
