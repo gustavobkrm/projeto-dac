@@ -29,6 +29,11 @@ Tela adm <br>
 
 
 <h1> Comandos Git </h1>
+<<<<<<< HEAD
+=======
+<h2>Clonar repositório</h2>
+<p>$ git clone https://github.com/gustavobkrm/projeto-dac.git </p>
+>>>>>>> a901bf86e565bd0a1ce66d963502d6710db6ab59
 
 <h3>Clonar repositório</h3>
 <p>$ git clone https://github.com/gustavobkrm/projeto-dac.git </p>
