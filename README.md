@@ -30,7 +30,6 @@ Tela adm <br>
 
 <h1> Comandos Git </h1>
 
-```
 <h3>Clonar repositório</h3>
 <p>$ git clone https://github.com/gustavobkrm/projeto-dac.git </p>
 <h3>Pegar atualizações do remoto</h3> 
@@ -39,4 +38,3 @@ Tela adm <br>
 <p>$ git add . </p>
 <p>$ git commit -m "mensagem do commit" </p>
 <p>$ git push </p>
-```
