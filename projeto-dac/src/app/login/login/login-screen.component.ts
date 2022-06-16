@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-screen.component.css']
 })
 export class LoginScreenComponent implements OnInit {
-
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }
