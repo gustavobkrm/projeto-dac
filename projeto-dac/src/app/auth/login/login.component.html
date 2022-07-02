@@ -1,0 +1,35 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<h1>Login com autenticador</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Faça Login para continuar</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="../../assets/img/icon-user.png"
+                    alt="">
+                <form #formLogin="ngForm" class="form-signin">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email" id="email" name="email"
+                            [(ngModel)]="login.login" #email="ngModel" required autofocus>
+                        <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                            <div [hidden]="!email.errors?.['required']">Email obrigatório.</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Senha" id="senha" name="name" 
+                            [(ngModel)]="login.senha" #senha="ngModel" required>
+                            <div *ngIf="senha.errors && (senha.dirty|| senha.touched)" class="alert alert-danger">
+                                <div [hidden]="!senha.errors?.['required']"> Senha obrigatória.</div>
+                            </div>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="button" (click)="logar()"
+                    [disabled]="!formLogin.form.valid">Logar</button>
+                </form>
+            </div>
+            <a href="#" class="text-center new-account">Criar conta</a>
+        </div>
+    </div>
+</div>
