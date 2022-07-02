@@ -5,7 +5,7 @@
 ====================================================== <br>
 Tela cliente <br>
 -> login flagado ⌛ faltando redirect <br>
--> home ❌ <br>
+-> home ⌛ *...loading - paula*<br>
 -> operaçoes (deposito - saque - transferencia) ❌ <br>
 -> consultar saldo e extrato ❌ <br>
 
@@ -13,7 +13,7 @@ Tela cliente <br>
 
 Tela gerente <br>
 -> login flagado ⌛ faltando redirect <br>
--> home ❌ <br>
+-> home ⌛ *...loading - paula*<br>
 -> consultar cliente (tudo) ❌ <br>
 -> consultar cliente (especifico) ❌ <br>
 -> consultar 5 melhores clientes ❌ <br>
@@ -22,7 +22,7 @@ Tela gerente <br>
 
 Tela adm <br>
 -> login flagado ⌛ faltando redirect <br>
--> home ❌ <br>
+-> home ⌛ *...loading - paula*<br>
 -> crud gerente ❌ <br>
 
 ====================================================== 
