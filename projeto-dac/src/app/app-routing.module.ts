@@ -6,15 +6,8 @@ import { HomeComponent } from './home';
 
 
 const routes: Routes = [
-  { path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'},
-  { path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ADMIN, GERENTE, CLIENTE'} 
-  },
+  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], data: {role: 'ADMIN, GERENTE, CLIENTE'}},
   ...LoginRoutes
 ];
 
