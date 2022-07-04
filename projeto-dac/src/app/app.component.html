@@ -5,36 +5,30 @@
             <i class="fa fa-user-edit"></i> {{ title }} </a>
             <div class="navbar-collapse collapsed justify-content-between" id="navbarContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><p class="navbar-text mb-0 text-white">
-                    <i class="fa fa-user"></i> {{ usuarioLogado.nome}} </p>
-                </li>    
+  
                 <!-- CLIENTE -->
-                <div *ngIf="usuarioLogado.perfil" === 'CLIENTE'>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/depositar">Depositar</a></li>
-                    <li class="nav-item">
+                    <li *ngIf="usuarioLogado.perfil == 'CLIENTE'" class="nav-item">
+                        <a class="nav-link" href="#" [routerLink]= "['/depositar']">Depositar</a></li>
+                    <li *ngIf="usuarioLogado.perfil == 'CLIENTE'" class="nav-item">
                         <a class="nav-link" href="#" routerLink="/saque">Saque</a></li>
-                    <li class="nav-item">
+                    <li *ngIf="usuarioLogado.perfil == 'CLIENTE'" class="nav-item">
                         <a class="nav-link" href="#" routerLink="/transferencia">Tranferência</a></li>
-                    <li class="nav-item">
+                    <li *ngIf="usuarioLogado.perfil == 'CLIENTE'" class="nav-item">
                         <a class="nav-link" href="#" routerLink="/saldo">Saldo</a></li>
-                    <li class="nav-item">
+                    <li *ngIf="usuarioLogado.perfil == 'CLIENTE'" class="nav-item">
                         <a class="nav-link" href="#" routerLink="/extrato">Extrato</a></li>
-                </div>
-                    <!-- GERENTE -->
-                <div *ngIf="usuarioLogado.perfil" === 'GERENTE'>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" routerLink="/listar-cliente">Lista clientes</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" routerLink="/buscar-cliente">Buscar cliente</a></li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" routerLink="/top-5-clientes">5 Melhores clientes</a></li>
-                </div> 
+
+                <!-- GERENTE -->
+                    <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/listar-cliente">Lista clientes</a></li>
+                    <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/buscar-cliente">Buscar cliente</a></li>
+                    <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/top-5-clientes">5 Melhores clientes</a></li>
+    
                 <!-- ADMINISTRADOR -->
-                <div *ngIf="usuarioLogado.perfil" === 'ADMIN'>
-                    <li  class="nav-item" >
+                    <li *ngIf="usuarioLogado.perfil === 'ADMIN'" class="nav-item" >
                         <a class="nav-link" href="#" routerLink="/gerentes">Gerentes</a></li>
-                </div>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
