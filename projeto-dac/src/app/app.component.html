@@ -1,1 +1,49 @@
-<router-outlet></router-outlet>
+<!-- LOGADO -->
+<div *ngIf="usuarioLogado" class="conteiner-fluid">
+    <nav class="navbar navbar-expand-md navbar-dark menu-color">
+        <a class="navbar-brand nav-link" href="#" routerLink="/">
+            <i class="fa fa-user-edit"></i> {{ title }} </a>
+            <div class="navbar-collapse collapsed justify-content-between" id="navbarContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- CLIENTE -->
+                <div *ngIf="usuarioLogado.perfil" === 'CLIENTE'>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/depositar">Depositar</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/saque">Saque</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/transferencia">Tranferência</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/saldo">Saldo</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/extrato">Extrato</a></li>
+                </div>
+                    <!-- GERENTE -->
+                <div *ngIf="usuarioLogado.perfil" === 'GERENTE'>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" routerLink="/listar-cliente">Lista clientes</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" routerLink="/buscar-cliente">Buscar cliente</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" routerLink="/top-5-clientes">5 Melhores clientes</a></li>
+                </div> 
+                <!-- ADMINISTRADOR -->
+                <div *ngIf="usuarioLogado.perfil" === 'ADMIN'>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/gerentes">Gerentes</a></li>
+                </div>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <p class="navbar-text mb-0 text-white">
+                        <i class="fa fa-user"></i> </p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="nav-shadow"></div>
+    <router-outlet></router-outlet>
+</div>
