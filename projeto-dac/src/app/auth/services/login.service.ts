@@ -23,18 +23,22 @@ export class LoginService {
   };
 
   login(login: Login): Observable <User | null> {
-    let user = new User(1, "Cliente", login.login, login.senha, "CLIENTE");
+    let user = new User(1, "Cliente", "clinte@email.com", "123456", 'CLIENTE');
 
     if (login.login == login.senha) {
       if (login.login == "admin") {
-        user = new User(1, "Admin", login.login, login.senha, "ADMIN");
+        user = new User(1, "Admin", login.login, login.senha, 'ADMIN');
       }
       else if (login.login == "gerente") {
-        user = new User(1, "Gerente", login.login, login.senha, "GERENTE");
+        user = new User(1, "Gerente", login.login, login.senha, 'GERENTE');
       }
     
       return of(user);
-    } else {
+    } 
+    else if(login.login == "cliente@email.com" && login.senha == "123456") {
+      return of(user);
+    }
+    else {
       return of(null);
     }
   }
