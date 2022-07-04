@@ -1,2 +1,2 @@
 export * from './login-module.module';
-export * from './login';
+export * from './login-2';

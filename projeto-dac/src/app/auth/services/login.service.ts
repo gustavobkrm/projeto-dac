@@ -26,7 +26,7 @@ export class LoginService {
     let user = new User(1, "Cliente", login.login, login.senha, "CLIENTE");
 
     if (login.login == login.senha) {
-      if (login.login== "admin") {
+      if (login.login == "admin") {
         user = new User(1, "Admin", login.login, login.senha, "ADMIN");
       }
       else if (login.login == "gerente") {

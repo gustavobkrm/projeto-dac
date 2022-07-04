@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginScreenComponent } from './login-2';
-
+import { HomeComponent } from './home.component';
 
 
 @NgModule({
   declarations: [
-    LoginScreenComponent
+    HomeComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    LoginScreenComponent
+    HomeComponent
   ]
 })
-export class LoginModule { }
+export class HomeModule { }

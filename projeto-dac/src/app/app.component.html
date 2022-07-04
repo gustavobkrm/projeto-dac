@@ -1,5 +1,5 @@
 <!-- LOGADO -->
-<div *ngIf="usuarioLogado" class="conteiner-fluid">
+<div *ngIf="usuarioLogado" class="conteiner-fluid" style="margin-bottom: 25px;">
     <nav class="navbar navbar-expand-md navbar-dark menu-color">
         <a class="navbar-brand nav-link" href="#" routerLink="/">
             <i class="fa fa-user-edit"></i> {{ title }} </a>
@@ -29,21 +29,37 @@
                 </div> 
                 <!-- ADMINISTRADOR -->
                 <div *ngIf="usuarioLogado.perfil" === 'ADMIN'>
-                    <li class="nav-item">
+                    <li  class="nav-item" >
                         <a class="nav-link" href="#" routerLink="/gerentes">Gerentes</a></li>
                 </div>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="#" (click)="logout()">Logout</a>
                 </li>
                 <li class="nav-item">
                     <p class="navbar-text mb-0 text-white">
                         <i class="fa fa-user"></i> </p>
                 </li>
+                <li class="nav-item" ngbDropdown>
+                    <div ngbDropdown Menu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+                        <a ngbDropdownItem href="#" routerLink="/home" (click)="$event.preventDefault()">Home</a>
+                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" routerLink="/depositar" (click)="$event.preventDefault()">Depositar</a>
+                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" routerLink="/saque" (click)="$event.preventDefault()">Saque</a>
+                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" routerLink="/transferencia" (click)="$event.preventDefault()">Transferência</a>
+                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" routerLink="/saldo" (click)="$event.preventDefault()">Saldo</a>
+                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" routerLink="/extrato" (click)="$event.preventDefault()">Extrato</a>
+                        
+                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" routerLink="/listar-cliente" (click)="$event.preventDefault()">Listar clientes</a>
+                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" routerLink="/buscar-cliente" (click)="$event.preventDefault()">Buscar clientes</a>
+                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" routerLink="/top-5-clientes" (click)="$event.preventDefault()">5 Melhores clientes</a>
+                        
+                        <a *ngIf="usuarioLogado.perfil ==='ADMIN'" ngbDropdownItemhref="#" routerLink="/gerentes" (click)="$event.preventDefault()">Gerentes</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
     <div class="nav-shadow"></div>
-    <router-outlet></router-outlet>
 </div>
+    <router-outlet></router-outlet>
