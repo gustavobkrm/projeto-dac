@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ListGerenteComponent } from './list-gerente';
 import { UpdateGerenteComponent } from './update-gerente';
 import { CreateGerenteComponent } from './create-gerente';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home';
 
 
 

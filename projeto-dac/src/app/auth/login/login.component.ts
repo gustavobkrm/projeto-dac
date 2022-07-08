@@ -44,8 +44,11 @@ export class LoginComponent implements OnInit {
           if (user.perfil === 'ADMIN') {
             this.router.navigate( ["/admin"]);
           }
-          else {
-            this.router.navigate( ["/home"] );
+          else if (user.perfil === 'GERENTE') {
+            this.router.navigate( ["/gerente"]);
+          }
+          else if (user.perfil === 'CLIENTE') {
+            this.router.navigate( ["/cliente"]);
           }
         } else {
           this.message = "Usuário e/ou senha inválidos.";

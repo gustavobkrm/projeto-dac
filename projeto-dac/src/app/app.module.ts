@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth'; 
-import { HomeModule } from './home/home.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { AdminModule } from './admin';
+import { GerenteModule } from './gerente';
 
 @NgModule({
   declarations: [
@@ -17,8 +17,8 @@ import { AdminModule } from './admin';
     AppRoutingModule,
     AuthModule,
     ClienteModule,
-    HomeModule,
-    AdminModule
+    AdminModule,
+    GerenteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
