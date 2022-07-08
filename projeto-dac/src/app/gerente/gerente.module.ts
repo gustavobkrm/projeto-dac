@@ -4,6 +4,7 @@ import { HomeComponent } from './home';
 import { ListarClienteComponent } from './listar-cliente/listar-cliente.component';
 import { BuscarClienteComponent } from './buscar-cliente/buscar-cliente.component';
 import { Top5ClientesComponent } from './top5-clientes/top5-clientes.component';
+import { GerenteService } from './services/gerente.service';
 
 
 
@@ -22,6 +23,9 @@ import { Top5ClientesComponent } from './top5-clientes/top5-clientes.component';
     ListarClienteComponent,
     BuscarClienteComponent,
     Top5ClientesComponent
+  ],
+  providers: [
+    GerenteService
   ]
 })
 export class GerenteModule { }

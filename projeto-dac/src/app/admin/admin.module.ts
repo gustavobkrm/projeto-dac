@@ -4,6 +4,7 @@ import { ListGerenteComponent } from './list-gerente';
 import { UpdateGerenteComponent } from './update-gerente';
 import { CreateGerenteComponent } from './create-gerente';
 import { HomeComponent } from './home';
+import { AdminService } from './services/admin.service';
 
 
 
@@ -22,6 +23,9 @@ import { HomeComponent } from './home';
     UpdateGerenteComponent,
     CreateGerenteComponent,
     HomeComponent
+  ],
+  providers: [
+    AdminService
   ]
 })
 export class AdminModule { }

@@ -6,6 +6,7 @@ import { SaqueComponent } from './saque/saque.component';
 import { TransferenciaComponent } from './transferencia/transferencia.component';
 import { SaldoComponent } from './saldo/saldo.component';
 import { ExtratoComponent } from './extrato/extrato.component';
+import { ClienteService } from './services/cliente.service';
 
 
 
@@ -28,6 +29,9 @@ import { ExtratoComponent } from './extrato/extrato.component';
     TransferenciaComponent,
     SaldoComponent,
     ExtratoComponent
+  ],
+  providers: [
+    ClienteService
   ]
 })
 export class ClienteModule { }
