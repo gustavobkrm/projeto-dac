@@ -24,11 +24,11 @@
                     <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
                         <a class="nav-link" href="#" [routerLink]="['/buscar-cliente']">Buscar cliente</a></li>
                     <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['/top-5-clientes']">5 Melhores clientes</a></li>
+                        <a class="nav-link" href="#" [routerLink]="['/top5-clientes']">5 Melhores clientes</a></li>
              
                 <!-- ADMINISTRADOR -->
                     <li *ngIf="usuarioLogado.perfil === 'ADMIN'" class="nav-item" >
-                        <a class="nav-link" href="#" [routerLink]="['/gerentes']">Gerentes</a></li>
+                        <a class="nav-link" href="#" [routerLink]="['/listar-gerente']">Gerentes</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -45,9 +45,9 @@
                         
                         <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/listar-cliente']" (click)="$event.preventDefault()">Listar clientes</a>
                         <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/buscar-cliente']" (click)="$event.preventDefault()">Buscar clientes</a>
-                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/top-5-clientes']" (click)="$event.preventDefault()">5 Melhores clientes</a>
+                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/top5-clientes']" (click)="$event.preventDefault()">5 Melhores clientes</a>
                         
-                        <a *ngIf="usuarioLogado.perfil ==='ADMIN'" ngbDropdownItemhref="#" [routerLink]="['/gerentes']" (click)="$event.preventDefault()">Gerentes</a>
+                        <a *ngIf="usuarioLogado.perfil ==='ADMIN'" ngbDropdownItemhref="#" [routerLink]="['/listar-gerente']" (click)="$event.preventDefault()">Gerentes</a>
                     </div>
                 </li>
             </ul>
