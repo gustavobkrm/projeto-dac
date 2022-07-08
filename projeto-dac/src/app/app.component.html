@@ -1,8 +1,12 @@
 <!-- LOGADO -->
 <div *ngIf="usuarioLogado" class="conteiner-fluid" style="margin-bottom: 25px">
     <nav class="navbar navbar-expand-md navbar-dark menu-color">
-        <a class="navbar-brand nav-link" href="#" [routerLink]="['/']">
+        <a *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="navbar-brand nav-link" href="#" [routerLink]="['/cliente']">
             <i class="fa fa-user-edit"></i> {{ title }} </a>
+        <a *ngIf="usuarioLogado.perfil === 'ADMIN'" class="navbar-brand nav-link" href="#" [routerLink]="['/admin']">
+            <i class="fa fa-user-edit"></i> {{ title }} </a>
+        <a *ngIf="usuarioLogado.perfil === 'GERENTE'" class="navbar-brand nav-link" href="#" [routerLink]="['/gerente']">
+           <i class="fa fa-user-edit"></i> {{ title }} </a>
             <div class="navbar-collapse collapsed justify-content-between" id="navbarContent">
             <ul class="navbar-nav mr-auto">
     
