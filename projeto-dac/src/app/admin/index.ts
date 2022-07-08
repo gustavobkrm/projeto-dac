@@ -1,0 +1,5 @@
+export * from './admin.module'
+export * from './create-gerente'
+export * from './list-gerente'
+export * from './update-gerente'
+export * from './home/home.component'

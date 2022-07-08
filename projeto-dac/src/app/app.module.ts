@@ -5,17 +5,20 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth'; 
 import { HomeModule } from './home/home.module';
 import { ClienteModule } from './cliente/cliente.module';
+import { AdminModule } from './admin';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthModule,
     ClienteModule,
-    HomeModule
+    HomeModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
