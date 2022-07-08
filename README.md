@@ -4,6 +4,7 @@
 
 ====================================================== <br>
 Tela cliente <br>
+-> cadastro de cliente: inserir crud na tela de criar cliente ❌
 -> login flagado ✅<br>
 -> home ⌛ *...loading - paula*<br>
 -> operaçoes (deposito - saque - transferencia) ❌ <br>
