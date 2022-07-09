@@ -7,6 +7,7 @@ import { TransferenciaComponent } from './transferencia/transferencia.component'
 import { SaldoComponent } from './saldo/saldo.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { ClienteService } from './services/cliente.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,7 +21,8 @@ import { ClienteService } from './services/cliente.service';
     ExtratoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     HomeComponent,
