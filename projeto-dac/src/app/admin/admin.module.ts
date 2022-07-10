@@ -9,6 +9,7 @@ import { ModalGerenteComponent } from './modal-gerente/modal-gerente.component';
 import { NumericoDirective } from '../shared/directives/numerico.directive';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 
@@ -26,7 +27,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
   imports: [
     CommonModule,
     NgxMaskModule.forRoot(),
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     ListGerenteComponent,

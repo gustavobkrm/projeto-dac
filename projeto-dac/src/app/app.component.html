@@ -1,5 +1,5 @@
 <!-- LOGADO -->
-<div *ngIf="usuarioLogado" class="conteiner-fluid" style="margin-bottom: 25px">
+<div *ngIf="usuarioLogado" class="conteiner-fluid">
     <nav class="navbar navbar-expand-md navbar-dark menu-color">
         <a *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="navbar-brand nav-link" href="#" [routerLink]="['/cliente']">
             <i class="fa fa-user-edit"></i> {{ title }} </a>

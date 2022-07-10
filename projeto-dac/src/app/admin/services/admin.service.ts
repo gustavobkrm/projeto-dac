@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { find } from 'rxjs';
-import { Gerente } from 'src/app/shared/models';
+import { Gerente, User } from 'src/app/shared/models';
 
 const LS_CHAVE : string = "gerentes";
 @Injectable({
@@ -17,10 +16,13 @@ export class AdminService {
     return gerentes ? JSON.parse(gerentes) : [];
   }
 
-  insert(gerente: Gerente) : void {
+  insert(gerente: Gerente, user : User) : void {
     const gerentes = this.listAll();
-
     gerente.id = new Date().getTime();
+    user.id = new Date().getTime();
+    user.nome = gerente.nome;
+    user.login = gerente.email;
+    user.perfil = 'GERENTE';
     gerentes.push(gerente);
     localStorage[LS_CHAVE] = JSON.stringify(gerentes);
   }
@@ -31,9 +33,8 @@ export class AdminService {
     return gerentes.find(gerente => gerente.id === id);
   }
 
-  update(gerente: Gerente) : void {
+  update(gerente : Gerente, user : User) : void {
     const gerentes: Gerente[] = this.listAll();
-
     gerentes.forEach((obj, index, objs) => {
       if (gerente.id === obj.id) {
         objs[index] = gerente;
