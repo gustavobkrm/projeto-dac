@@ -4,9 +4,9 @@
 
 ====================================================== <br>
 Tela cliente <br>
--> cadastro de cliente: inserir crud na tela de criar cliente ❌ <br>
+-> cadastro de cliente: inserir crud na tela de criar cliente ⌛ <br>
 -> login flagado ✅<br>
--> home ⌛ *...loading - paula*<br>
+-> home ❌<br>
 -> operaçoes (deposito - saque - transferencia) ❌ <br>
 -> consultar saldo e extrato ❌ <br>
 
@@ -14,7 +14,7 @@ Tela cliente <br>
 
 Tela gerente <br>
 -> login flagado ✅ <br>
--> home ⌛ *...loading - paula*<br>
+-> home ❌<br>
 -> consultar cliente (tudo) ❌ <br>
 -> consultar cliente (especifico) ❌ <br>
 -> consultar 5 melhores clientes ❌ <br>
@@ -23,8 +23,8 @@ Tela gerente <br>
 
 Tela adm <br>
 -> login flagado ✅<br>
--> home ⌛ *...loading - paula*<br>
--> crud gerente ❌ <br>
+-> home ❌<br>
+-> crud gerente ✅ <br> (falta apenas puxar a senha na tela de update)
 
 ====================================================== 
 
