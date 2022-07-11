@@ -24,7 +24,7 @@ Tela gerente <br>
 Tela adm <br>
 -> login flagado ✅<br>
 -> home ❌<br>
--> crud gerente ✅ <br> (falta apenas puxar a senha na tela de update)
+-> crud gerente ✅ <br>
 
 ====================================================== 
 
