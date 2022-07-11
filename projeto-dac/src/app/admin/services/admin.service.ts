@@ -65,8 +65,11 @@ export class AdminService {
   
   delete(id: number) : void {
     let gerentes : Gerente[] = this.listAll();
-    gerentes = gerentes.filter(gerente => gerente.id !== id);
+    let users : User[] = this.listAllUser();
 
+    gerentes = gerentes.filter(gerente => gerente.id !== id);
+    users = users.filter(user => user.id !== id);
+    
     localStorage[LS_CHAVE] = JSON.stringify(gerentes);
   }
 }
