@@ -4,7 +4,7 @@
 
 ====================================================== <br>
 Tela cliente <br>
--> cadastro de cliente: inserir crud na tela de criar cliente ⌛ <br>
+-> cadastro de cliente: inserir crud na tela de criar cliente ✅ (botao de cep nao funciona) <br>
 -> login flagado ✅<br>
 -> home ❌<br>
 -> operaçoes (deposito - saque - transferencia) ❌ <br>
