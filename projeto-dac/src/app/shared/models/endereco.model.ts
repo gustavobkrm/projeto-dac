@@ -6,6 +6,7 @@ export class Endereco {
         public numero? : number,
         public complemento? : string,
         public cep? : string,
+        public bairro? : string,
         public cidade? : string,
         public estado? : string
     ) {}

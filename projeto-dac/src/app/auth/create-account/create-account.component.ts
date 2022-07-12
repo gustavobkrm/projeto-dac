@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CreateAccountService } from '../services/create-account.service';
-import { Cliente, User } from 'src/app/shared/models';
-
+import { Cliente, User, Endereco } from 'src/app/shared/models';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -15,19 +14,29 @@ export class CreateAccountComponent implements OnInit {
 
   cliente! : Cliente;
   user! : User;
+  endereco! : Endereco;
 
   constructor(private createaccountService : CreateAccountService, private router : Router) { }
 
   ngOnInit(): void {
     this.cliente = new Cliente();
     this.user = new User();
+    this.endereco = new Endereco();
   }
 
   insert(): void {
     if (this.formCreateAccount.form.valid) {
-      this.createaccountService.insert(this.cliente, this.user);
+      this.createaccountService.insert(this.cliente, this.user, this.endereco);
       this.router.navigate( ["/login"] );
     }
   }
 
+  consultaCEP() {
+    
+    const cep = this.endereco.cep as string;
+  
+    this.createaccountService.consultaCEP(cep);
+    
+  }
+    
 }

@@ -64,3 +64,11 @@
     margin-bottom: 20px;
     background-color: #f7f7f7;
 }
+
+.cadastro-line {
+    height:2px;
+    width:100%;
+    border-width:0;
+    color:#000;
+    background-color:#000;
+}

@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
 
-
-
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
   declarations: [
     LoginComponent,
@@ -15,7 +16,9 @@ import { CreateAccountComponent } from './create-account/create-account.componen
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgxMaskModule.forRoot(),
+    HttpClientModule
   ],
   exports: [
     LoginComponent,
