@@ -29,7 +29,7 @@ export class LoginService {
       if (login.login == "admin") {
         user = new User(1, "Admin", login.login, login.senha, 'ADMIN');
       }
-      else if (user.perfil == "GERENTE") {
+      else if (login.login == "gerente") {
         user = new User(1, "Gerente", login.login, login.senha, 'GERENTE');
       }
     
