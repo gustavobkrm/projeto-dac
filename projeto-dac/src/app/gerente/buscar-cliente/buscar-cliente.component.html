@@ -16,4 +16,12 @@
             Buscar
         </button>
     </form>
+    <div *ngIf="cliente.nome">
+        <label for="nome">Nome:</label>
+        <p id="nome">{{cliente.nome}}</p>
+        <label for="email">Email:</label>
+        <p id="email">{{cliente.email}}</p>
+    </div>
+
+
 </div>
