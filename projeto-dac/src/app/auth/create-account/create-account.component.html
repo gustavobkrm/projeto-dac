@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group wrap-input">
                     <span class="label-input ">Senha *</span>
-                    <input type="password" class=" form-input" id="senha" name="senha" minlength="4" placeholder="Digite a senha" [(ngModel)]="user.senha" #senha="ngModel" required> 
+                    <input type="password" class=" form-input" id="senha" name="senha" minlength="4" placeholder="Digite a senha" [(ngModel)]="cliente.senha" #senha="ngModel" required> 
                 </div>
                 <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
                     <div [hidden]="!senha.errors?.['required']">Campo Senha é obrigatório.</div>
@@ -49,7 +49,7 @@
                 <hr class="cadastro-line">
                 <div class="form-group wrap-input col-6">
                     <span class="label-input">CEP *</span>
-                    <input type="text" class=" form-input" id="cep" name="cep" mask="00000-000" placeholder="Digite o CEP" [(ngModel)]="endereco.cep"  required> 
+                    <input type="text" class=" form-input" id="cep" #cep="ngModel" name="cep" mask="00000-000" placeholder="Digite o CEP" [(ngModel)]="endereco.cep"  required> 
                 </div>
                 <div class="form-group col">
                     <button type="button" class="btn btn-info btn-lg" (click)="consultaCEP()" style="margin: 12px auto;" [disabled]="!endereco.cep">Buscar</button>    
@@ -61,8 +61,8 @@
                     </div> -->
                     <div class="form-group wrap-input col-8">
                         <span class="label-input ">Logradouro *</span>
-                        <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro" [(ngModel)]="endereco.logradouro" required> 
-                        <span>{{endereco.logradouro}}</span>
+                        <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro"  [(ngModel)]="endereco.logradouro" required> 
+                        <span>{{endereco?.logradouro}}</span>
                     </div>
                         
                     <div class="form-group wrap-input col-3">
@@ -76,17 +76,17 @@
                     <div class="form-group wrap-input col-6">
                         <span class="label-input ">Bairro</span>
                         <input type="text" class=" form-input" id="bairro" name="bairro"  placeholder="Digite o bairro">
-                        <span>{{endereco.bairro}}</span> 
+                        <span>{{endereco?.bairro}}</span> 
                     </div>
                     <div class="form-group wrap-input col-5">
                         <span class="label-input ">Cidade *</span>
                         <input type="text" class=" form-input" id="cidade" name="cidade" placeholder="Digite a cidade" [(ngModel)]="endereco.cidade" [value]="endereco.cidade" required> 
-                        <span>{{endereco.cidade}}</span>
+                        <span>{{endereco?.cidade}}</span>
                     </div>
                     <div class="form-group wrap-input col-6">
                         <span class="label-input ">Estado *</span>
                         <input type="text" class=" form-input" id="estado" name="estado" placeholder="Digite o estado" [(ngModel)]="endereco.estado" required>
-                        <span *ngIf="endereco">{{endereco.estado}}</span>
+                        <span *ngIf="endereco">{{endereco?.estado}}</span>
                     </div>
                 </div>
                 <div class="form-group position-relative">

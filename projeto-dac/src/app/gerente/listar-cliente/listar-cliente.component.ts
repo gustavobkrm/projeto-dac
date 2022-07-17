@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/shared/models';
+import { GerenteService } from '../services/gerente.service';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private gerenteService: GerenteService) { }
 
   ngOnInit(): void {
   }
 
+  aprovarCliente(cliente: Cliente){
+    this.gerenteService.aprovarCliente(cliente);
+  }
 }

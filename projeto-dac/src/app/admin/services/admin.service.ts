@@ -29,7 +29,7 @@ export class AdminService {
     gerente.id = new Date().getTime();
     user.id = new Date().getTime();
     user.nome = gerente.nome;
-    user.login = gerente.email;
+    user.email = gerente.email;
     user.perfil = 'GERENTE';
     
     gerentes.push(gerente);

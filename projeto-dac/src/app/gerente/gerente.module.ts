@@ -6,6 +6,7 @@ import { BuscarClienteComponent } from './buscar-cliente/buscar-cliente.componen
 import { Top5ClientesComponent } from './top5-clientes/top5-clientes.component';
 import { GerenteService } from './services/gerente.service';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     Top5ClientesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     HomeComponent,

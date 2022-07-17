@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Login } from 'src/app/shared/models';
-import { LoginService } from '../services/login.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   message! : string;
 
   constructor(
-    private loginService : LoginService,
+    private authService : AuthService,
     private router : Router,
     private route : ActivatedRoute
   ) { 
 
-    if (this.loginService.usuarioLogado) {
+    if (this.authService.usuarioLogado) {
       this.router.navigate( ["/home"]);
     }
   }
@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
   logar() : void {
     this.loading = true;
     if (this.formLogin.form.valid) {
-      this.loginService.login(this.login).subscribe((user) =>{
+      this.authService.login(this.login).subscribe((user) =>{
         if (user != null) {
-          this.loginService.usuarioLogado = user;
+          this.authService.usuarioLogado = user;
           this.loading = false;
           if (user.perfil === 'ADMIN') {
             this.router.navigate( ["/admin"]);

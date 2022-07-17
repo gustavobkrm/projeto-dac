@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from './auth';
+import { AuthService } from './auth';
 import { User } from './shared/models';
 
 @Component({
@@ -12,14 +12,14 @@ export class AppComponent {
   title = 'projeto-dac';
 
   constructor(
-    private router: Router, private loginService: LoginService) { }
+    private router: Router, private authService: AuthService) { }
   
   get usuarioLogado(): User | null {
-    return this.loginService.usuarioLogado;
+    return this.authService.usuarioLogado;
   }
   
   logout() {
-    this.loginService.logout();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }
