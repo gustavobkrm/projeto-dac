@@ -34,7 +34,7 @@
             <div class="col-sm-2 text-center">
                 <p class="fw-bold" id="nome">{{cliente.nome}}</p>
                 <p class="fw-bold" id="email">{{cliente.email}}</p>
-                <p class="fw-bold" id="email">{{cliente.salario}}</p>
+                <p class="fw-bold" id="email">{{cliente.salario! | currency }}</p>
                 <p class="fw-bold" id="email">{{cliente.endereco?.logradouro}}</p>
                 <p class="fw-bold" id="email">{{cliente.endereco?.numero}}</p>
                 <p class="fw-bold" id="email">{{cliente.endereco?.complemento }} </p>

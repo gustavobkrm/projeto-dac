@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group wrap-input">
                     <span class="label-input ">Salário *</span>
-                    <input type="text" class=" form-input" id="salario" name="salario"  placeholder="Digite o salário" [(ngModel)]="cliente.salario" #salario="ngModel"required> 
+                    <input type="text" class=" form-input" id="salario" name="salario"  placeholder="Digite o salário" [(ngModel)]="cliente.salario" (ngModelChange)="cliente.salario = $event" #salario="ngModel" prefix="R$ " mask="separator.2" thousandSeparator="." required> 
                 </div>
                 <div *ngIf="salario.errors && (salario.dirty || salario.touched)" class="alert alert-danger">
                     <div [hidden]="!salario.errors?.['required']">Campo Salário é obrigatório.</div>
@@ -49,16 +49,12 @@
                 <hr class="cadastro-line">
                 <div class="form-group wrap-input col-6">
                     <span class="label-input">CEP *</span>
-                    <input type="text" class=" form-input" id="cep" #cep="ngModel" name="cep" mask="00000-000" placeholder="Digite o CEP" [(ngModel)]="endereco.cep"  required> 
+                    <input type="text" class=" form-input" id="cep" #cep="ngModel" name="cep" mask="00000-000" placeholder="Digite o CEP" [(ngModel)]="endereco.cep" required> 
                 </div>
                 <div class="form-group col">
                     <button type="button" class="btn btn-info btn-lg" (click)="consultaCEP()" style="margin: 12px auto;" [disabled]="!endereco.cep">Buscar</button>    
                 </div>
-                <div class="row justify-content-between">
-            <!--        <div class="form-group wrap-input col-3">
-                        <span class="label-input ">Tipo *</span>
-                        <input type="text" class=" form-input" id="tipo" name="tipo" placeholder="Digite o tipo" [(ngModel)]="endereco.tipo" required> 
-                    </div> -->
+                <div *ngIf="endereco" class="row justify-content-between">
                     <div class="form-group wrap-input col-8">
                         <span class="label-input ">Logradouro *</span>
                         <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro"  [(ngModel)]="endereco.logradouro" required> 
