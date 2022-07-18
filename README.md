@@ -15,7 +15,7 @@ Tela cliente <br>
 Tela gerente <br>
 -> login flagado ✅ <br>
 -> home ❌<br>
--> consultar cliente (tudo) ❌ <br>
+-> consultar cliente (tudo) ✅ <br>
 -> consultar cliente (especifico) ❌ <br>
 -> consultar 5 melhores clientes ❌ <br>
 
