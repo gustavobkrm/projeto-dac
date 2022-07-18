@@ -13,14 +13,16 @@ export class AuthService implements OnInit{
   
   constructor() { 
     let users : User[] = [];
-    
+    let cliente: Cliente = new Cliente(1,"clientinhoPendente","clientao","teste", "CLIENTE", false, "09849089090", 2000000000);
+    let cliente2: Cliente = new Cliente(1,"clienteAprovado","clientoso","teste", "CLIENTE", true, "09849089090", 2000000000);
+
     users.push(new User(1, "Admin", "Admin", "Admin", 'ADMIN'));
     users.push(new User(2, "Cliente", "cliente@email.com", "123456", 'CLIENTE'));
     users.push(new User(3, "Gerente", "Gerente", "Gerente", 'GERENTE'));
-    users.push(new Gerente(4,"Gerente2","Gerente2","Gerente2","GERENTE","213213213",Array(new Cliente(),new Cliente())));
+    users.push(new Gerente(4,"Gerente2","Gerente2","Gerente2","GERENTE","213213213",Array(cliente,cliente2)));
     users.push(new Gerente(5,"Gerente3","Gerente3","Gerente3","GERENTE","213213213",Array(new Cliente(),new Cliente())));
-    users.push(new Cliente(6,"Cliente","Cliente","Cliente","CLIENTE","11047352905",1000));
-    
+    users.push(new Cliente(6,"Cliente","Cliente","Cliente","CLIENTE",false, "11047352905",1000));
+    users.push (cliente);
     this.usuariosCadastrados = users;
     console.log("component initialized"); 
   }
@@ -107,8 +109,9 @@ export class AuthService implements OnInit{
   
   aprovarCliente(cliente: Cliente) {
     let users :User[] = this.usuariosCadastrados;
+    cliente.aprovado = true;
     users.push(cliente);
-    this.usuariosCadastrados = users;    
+    this.usuariosCadastrados = users;
   }
 
   adicionarUsuarioPendente(cliente: Cliente) {
