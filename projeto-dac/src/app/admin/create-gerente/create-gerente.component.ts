@@ -14,6 +14,7 @@ export class CreateGerenteComponent implements OnInit {
   @ViewChild('formGerente') formGerente! : NgForm;
   gerente! : Gerente;
   user! : User;
+  
   constructor(private adminService : AdminService, private router : Router) { }
 
   ngOnInit(): void {
