@@ -7,6 +7,7 @@ import { Top5ClientesComponent } from './top5-clientes/top5-clientes.component';
 import { GerenteService } from './services/gerente.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     HomeComponent,

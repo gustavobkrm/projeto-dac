@@ -140,8 +140,9 @@ export class AuthService implements OnInit{
   
   aprovarCliente(cliente: Cliente) {
     let users :User[] = this.usuariosCadastrados;
+    cliente.aprovado = true;
     users.push(cliente);
-    this.usuariosCadastrados = users;    
+    this.usuariosCadastrados = users;
   }
 
   adicionarUsuarioPendente(cliente: Cliente) {

@@ -1,3 +1,20 @@
+@media (min-width: 1920px) {
+    .background-page {
+        min-height: 1050px;
+    }
+}
+
+@media (max-width: 1680px) {
+    .background-page {
+        min-height: 900px
+    }
+}
+@media (max-width: 1366px) {
+    .background-page {
+        min-height: 650px;
+    }
+}
+
 .title {
     font-family: 'Muli', sans-serif;
     color: #292929f3;
@@ -6,7 +23,7 @@
 
 .background-page {
     background-color: #f7f7f7;
-    margin: 0;
+    margin: 0 !important;
     display: flex;
 }
 .button-list {
@@ -71,4 +88,8 @@
     border-width:0;
     color:#000;
     background-color:#000;
+}
+
+.busca {
+    padding: 0 50px 25px;
 }
