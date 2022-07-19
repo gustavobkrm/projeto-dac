@@ -14,7 +14,6 @@ export class UpdateGerenteComponent implements OnInit {
   @ViewChild("formGerente") formGerente! : NgForm;
 
   gerente! : Gerente
-  user! : User;
   
   constructor(
     private adminService : AdminService,
@@ -25,9 +24,8 @@ export class UpdateGerenteComponent implements OnInit {
   ngOnInit(): void {
     let id = +this.route.snapshot.params['id'];
     const res = this.adminService.findById(id);
-    if (res !== undefined) {
+    if (res !== null) {
       this.gerente = res;
-      this.user = res;
     }
     else  
       throw new Error("Gerente não encontrado: id = " + id);
@@ -36,7 +34,7 @@ export class UpdateGerenteComponent implements OnInit {
   update() : void {
 
     if(this.formGerente.form.valid) {
-      this.adminService.update(this.gerente, this.user);
+      this.adminService.update(this.gerente);
       this.router.navigate(['/listar-gerente']);
     }
   }

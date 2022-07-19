@@ -17,7 +17,7 @@ export class GerenteService {
   }
 
   buscarCliente(cpf: string): Cliente | null{
-    return this.authService.getClientePerCPF(cpf);
+    return this.authService.getClienteByCPF(cpf);
   }
 
 }

@@ -10,19 +10,10 @@ const LS_USUARIOS: string = "usuariosCadastrados";
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
+ 
   
-  constructor() { 
-    let users : User[] = [];
-    
-    users.push(new User(1, "Admin", "Admin", "Admin", 'ADMIN'));
-    users.push(new User(2, "Cliente", "cliente@email.com", "123456", 'CLIENTE'));
-    users.push(new User(3, "Gerente", "Gerente", "Gerente", 'GERENTE'));
-    users.push(new Gerente(4,"Gerente2","Gerente2","Gerente2","GERENTE","213213213",Array(new Cliente(),new Cliente())));
-    users.push(new Gerente(5,"Gerente3","Gerente3","Gerente3","GERENTE","213213213",Array(new Cliente(),new Cliente())));
-    users.push(new Cliente(6,"Cliente","Cliente","Cliente","CLIENTE","11047352905",1000));
-    
-    this.usuariosCadastrados = users;
-    console.log("component initialized"); 
+  constructor() {     
+  console.log("component initialized"); 
   }
 
   ngOnInit() {
@@ -39,6 +30,17 @@ export class AuthService implements OnInit{
 
   public get usuariosCadastrados(): User[]{
     let users = localStorage[LS_USUARIOS];
+    //MEGA GAMBIARRA QUE SERA RETIRADA QUANDO HOUVER BANCO DE DADOS
+    
+    if(users ==  []){
+      users.push(new User(1, "Admin", "Admin", "Admin", 'ADMIN'));
+    //users.push(new User(2, "Cliente", "cliente@email.com", "123456", 'CLIENTE'));
+    //users.push(new User(3, "Gerente", "Gerente", "Gerente", 'GERENTE'));
+    //users.push(new Gerente(4,"Gerente2","Gerente2","Gerente2","GERENTE","213213213",Array(new Cliente(),new Cliente())));
+    //users.push(new Gerente(5,"Gerente3","Gerente3","Gerente3","GERENTE","213213213",Array(new Cliente(),new Cliente())));
+    //users.push(new Cliente(6,"Cliente","Cliente","Cliente","CLIENTE","11047352905",1000));
+    }
+
     return(users? JSON.parse(localStorage[LS_USUARIOS]) : null);
   };
 
@@ -78,7 +80,7 @@ export class AuthService implements OnInit{
     return users.filter(user => user.perfil == "CLIENTE");
   }
 
-  getGerentePerCliente(): Gerente{
+  getGerenteByCliente(): Gerente{
     let gerentes: Gerente[] = this.getAllGerentes();
     let gerente: Gerente = new Gerente(); 
     
@@ -94,7 +96,38 @@ export class AuthService implements OnInit{
       return gerente;
   }
 
-  getClientePerCPF(cpf: string):Cliente | null{
+  getGerenteById(id: number) {
+    let gerentes = this.getAllGerentes();
+    let gerente;
+    gerente = gerentes.find(gerente => gerente.id == id );
+    if(gerente){
+      return gerente;
+    }else{
+      return null;
+    }
+  }
+  deleteUserById(id: number){
+    console.log(id);
+    let users = this.usuariosCadastrados;
+    users = users.filter(user => user.id !== id);
+    this.usuariosCadastrados = users;
+    
+  }
+
+  updateUser(user: User) {
+    let users = this.usuariosCadastrados;
+    users.forEach((obj, index, objs) => {
+      if(obj.id == user.id){
+        console.log(obj.nome);
+        console.log(user.nome);
+        objs[index] = user;
+      }
+    });
+    this.usuariosCadastrados = users;
+  }
+  
+
+  getClienteByCPF(cpf: string):Cliente | null{
     let clientes: Cliente[] = this.getAllClientes();
     let cliente; 
     cliente = clientes.find(cliente => cliente.cpf == cpf );
@@ -112,7 +145,7 @@ export class AuthService implements OnInit{
   }
 
   adicionarUsuarioPendente(cliente: Cliente) {
-    let gerente = this.getGerentePerCliente();
+    let gerente = this.getGerenteByCliente();
     gerente.clientes?.push(cliente);
 
   }

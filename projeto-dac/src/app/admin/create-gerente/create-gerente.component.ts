@@ -13,17 +13,16 @@ export class CreateGerenteComponent implements OnInit {
 
   @ViewChild('formGerente') formGerente! : NgForm;
   gerente! : Gerente;
-  user! : User;
   constructor(private adminService : AdminService, private router : Router) { }
 
   ngOnInit(): void {
     this.gerente = new Gerente();
-    this.user = new User();
+    
   }
 
   insert() : void {
     if (this.formGerente.form.valid) {
-      this.adminService.insert(this.gerente, this.user);
+      this.adminService.insert(this.gerente);
       this.router.navigate( ["/listar-gerente"]);
     }
   }

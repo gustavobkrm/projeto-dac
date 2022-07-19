@@ -27,7 +27,7 @@
             </div>
             <div class="form-group wrap-input">
                 <span class="label-input ">Senha *</span>
-                <input type="password" class=" form-input" id="senha" name="senha" minlength="4" placeholder="Digite a senha" [(ngModel)]="user.senha" #senha="ngModel" required> 
+                <input type="password" class=" form-input" id="senha" name="senha" minlength="4" placeholder="Digite a senha" [(ngModel)]="gerente.senha" #senha="ngModel" required> 
             </div>
             <div *ngIf="senha.errors && (senha.dirty || senha.touched)" class="alert alert-danger">
                 <div [hidden]="!senha.errors?.['required']">Campo Senha obrigatório.</div>

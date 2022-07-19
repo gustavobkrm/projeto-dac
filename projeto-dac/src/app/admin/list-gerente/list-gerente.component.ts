@@ -16,11 +16,12 @@ export class ListGerenteComponent implements OnInit {
               private modalService : NgbModal) { }
 
   ngOnInit(): void {
-    this.gerentes = this.listAll();
+    console.log("Inicializou listagem")
+    this.gerentes = this.listAllGerentes();
   }
 
-  listAll() : Gerente[] {
-    return this.adminService.listAll();
+  listAllGerentes() : Gerente[] {
+    return this.adminService.listAllGerentes();
   }
 
   delete($event: any, gerente: Gerente) : void {
@@ -28,7 +29,7 @@ export class ListGerenteComponent implements OnInit {
 
     if (confirm(`Deseja realmente remover o gerente ${gerente.nome}`)) {
       this.adminService.delete(gerente.id!);
-      this.gerentes = this.listAll();
+      this.gerentes = this.listAllGerentes();
     }
   }
 
