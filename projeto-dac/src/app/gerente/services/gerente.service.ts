@@ -19,8 +19,10 @@ export class GerenteService {
 
   rejeitarCliente(cliente: Cliente){
     let index = this.gerente.clientes?.indexOf(cliente);
-    if (index !== undefined)
+    if (index !== undefined){
       this.gerente.clientes?.splice(index, 1);
+      this.authService.updateUser(this.gerente);
+    }
   }
 
   buscarCliente(cpf: string): Cliente | null{
@@ -29,6 +31,8 @@ export class GerenteService {
 
   retornaClientes(): Cliente[] | undefined {
     let clientes: Cliente[] = [];
+    console.log(this.gerente.clientes);
+    
     if (this.gerente.clientes !== undefined){
       this.gerente.clientes.forEach(cliente => { 
         if (!cliente.aprovado)

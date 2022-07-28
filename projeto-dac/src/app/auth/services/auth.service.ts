@@ -148,7 +148,7 @@ export class AuthService implements OnInit{
   adicionarUsuarioPendente(cliente: Cliente) {
     let gerente = this.getGerenteByCliente();
     gerente.clientes?.push(cliente);
-
+    this.updateUser(gerente);
   }
 
 }
