@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Login } from 'src/app/shared/models';
+import { Login, User } from 'src/app/shared/models';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   login : Login = new Login();
   loading : boolean = false;
   message! : string;
-
+  //debug
+  users !: User[];
   constructor(
     private authService : AuthService,
     private router : Router,
@@ -32,7 +33,21 @@ export class LoginComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.message = params['error'];
     });
+    this.users = this.authService.usuariosCadastrados;
   }
+
+  //remover
+  delete($event: any, user: User) : void {
+    $event.preventDefault();
+
+    if (confirm(`Deseja realmente remover o gerente ${user.nome}`)) {
+      if(user.id)
+      this.authService.deleteUserById(user.id);
+      this.users = this.authService.usuariosCadastrados;
+    }
+  }
+
+
 
   logar() : void {
     this.loading = true;

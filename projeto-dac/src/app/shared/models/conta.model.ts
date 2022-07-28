@@ -1,4 +1,4 @@
-import { Cliente } from "./cliente.model";
+import { Operacao } from "./operacao.model";
 
 export class Conta {
     constructor(
@@ -6,6 +6,6 @@ export class Conta {
         public conta? : number,
         public criacao? : Date,
         public limite? : number,
-        public cliente? : Cliente
+        public historico? : Operacao[],
     ) {}
 }

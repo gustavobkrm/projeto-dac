@@ -14,15 +14,21 @@ export class GerenteService {
   }
   
   aprovarCliente(cliente: Cliente) {
-    this.authService.aprovarCliente(cliente);
+    cliente.aprovado = true;
+    this.gerente.clientes?.forEach((obj) => {
+      if(obj.id == cliente.id){
+        obj = cliente;
+      }
+    });
+    this.authService.adicionarUsuarios(cliente);
+    this.authService.usuarioLogado = this.gerente;
+    this.authService.updateUser(this.gerente);
   }
 
   rejeitarCliente(cliente: Cliente){
-    let index = this.gerente.clientes?.indexOf(cliente);
-    if (index !== undefined){
-      this.gerente.clientes?.splice(index, 1);
-      this.authService.updateUser(this.gerente);
-    }
+    this.gerente.clientes = this.gerente.clientes?.filter(value => value.id != cliente.id);
+    this.authService.usuarioLogado = this.gerente;
+    this.authService.updateUser(this.gerente);
   }
 
   buscarCliente(cpf: string): Cliente | null{
@@ -31,13 +37,11 @@ export class GerenteService {
 
   retornaClientes(): Cliente[] | undefined {
     let clientes: Cliente[] = [];
-    console.log(this.gerente.clientes);
-    
+   
     if (this.gerente.clientes !== undefined){
       this.gerente.clientes.forEach(cliente => { 
         if (!cliente.aprovado)
           clientes.push(cliente); 
-          console.log(cliente);
       })  
     };
     return clientes;

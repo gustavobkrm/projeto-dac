@@ -30,17 +30,7 @@ export class AuthService implements OnInit{
 
   public get usuariosCadastrados(): User[]{
     let users = localStorage[LS_USUARIOS];
-    //MEGA GAMBIARRA QUE SERA RETIRADA QUANDO HOUVER BANCO DE DADOS
     
-    if(users ==  []){
-      users.push(new User(1, "Admin", "Admin", "Admin", 'ADMIN'));
-    //users.push(new User(2, "Cliente", "cliente@email.com", "123456", 'CLIENTE'));
-    //users.push(new User(3, "Gerente", "Gerente", "Gerente", 'GERENTE'));
-    //users.push(new Gerente(4,"Gerente2","Gerente2","Gerente2","GERENTE","213213213",Array(new Cliente(),new Cliente())));
-    //users.push(new Gerente(5,"Gerente3","Gerente3","Gerente3","GERENTE","213213213",Array(new Cliente(),new Cliente())));
-    //users.push(new Cliente(6,"Cliente","Cliente","Cliente","CLIENTE","11047352905",1000));
-    }
-
     return(users? JSON.parse(localStorage[LS_USUARIOS]) : null);
   };
 
@@ -62,6 +52,12 @@ export class AuthService implements OnInit{
    
     let users :User[] = this.usuariosCadastrados;
     let user;
+    
+    if(!users.length){
+      users.push(new User(1,"Admin","Admin","Admin","ADMIN"));
+      this.usuariosCadastrados =  users;
+    }
+    
     user = users.find(user =>  user.email == login.login && user.senha == login.senha);
     if(user != undefined){
       return of(user);
@@ -116,13 +112,13 @@ export class AuthService implements OnInit{
 
   updateUser(user: User) {
     let users = this.usuariosCadastrados;
-    users.forEach((obj, index, objs) => {
+    console.log(user);
+    users.forEach((obj) => {
       if(obj.id == user.id){
-        console.log(obj.nome);
-        console.log(user.nome);
-        objs[index] = user;
+        obj = user;
       }
     });
+    console.log(users);
     this.usuariosCadastrados = users;
   }
   
@@ -137,18 +133,28 @@ export class AuthService implements OnInit{
       return null;
     }
   }
-  
-  aprovarCliente(cliente: Cliente) {
-    let users :User[] = this.usuariosCadastrados;
-    cliente.aprovado = true;
-    users.push(cliente);
-    this.usuariosCadastrados = users;
-  }
 
+  getClienteByEmail(email: string):Cliente | null{
+    let clientes: Cliente[] = this.getAllClientes();
+    let cliente; 
+    cliente = clientes.find(cliente => cliente.email == email );
+    if(cliente){
+      return cliente;
+    }else{
+      return null;
+    }
+  }
+  
   adicionarUsuarioPendente(cliente: Cliente) {
     let gerente = this.getGerenteByCliente();
-    gerente.clientes?.push(cliente);
-    this.updateUser(gerente);
-  }
+ 
+    if(cliente.email !== undefined)
+      if(this.getClienteByEmail(cliente.email)){
+        throw new Error("Erro de cadastro, email ja esta em uso");      
+      }else{
+        gerente.clientes?.push(cliente);
+        this.updateUser(gerente);    
+      }
+ }
 
 }

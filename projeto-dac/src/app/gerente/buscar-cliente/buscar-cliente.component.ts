@@ -22,6 +22,7 @@ export class BuscarClienteComponent implements OnInit {
       cliente = this.gerenteService.buscarCliente(this.cliente.cpf);
       if(cliente) this.cliente = cliente;
     }
+
   }
 
 

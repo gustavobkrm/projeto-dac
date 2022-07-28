@@ -6,6 +6,7 @@
             <tr>
                 <th>CPF</th>
                 <th>Salario</th>
+                <th>aprovado</th>
                 <th>Endereço</th>
             </tr>
         </thead>
@@ -13,6 +14,7 @@
             <tr *ngFor="let cliente of clientes" class="position-relative">
                 <td> {{cliente.nome}} </td>
                 <td> {{cliente.salario}} </td>
+                <td> {{cliente.aprovado}}</td>
                 <td> {{cliente.endereco}} </td>
                 <td class="text-center" style="width: 10%">          
                     <button (click)="aprovarCliente(cliente)"  href="#" title="Novo" alt="Novo" class="btn btn-xs btn-success button-list">
