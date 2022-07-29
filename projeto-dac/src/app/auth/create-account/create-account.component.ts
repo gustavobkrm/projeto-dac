@@ -24,7 +24,7 @@ export class CreateAccountComponent implements OnInit {
 
   insert(): void {
     this.cliente.endereco = this.endereco;
-
+    console.log(this.cliente);
     if (this.formCreateAccount.form.valid) {
       this.createaccountService.insert(this.cliente);
       this.router.navigate( ["/login"] );

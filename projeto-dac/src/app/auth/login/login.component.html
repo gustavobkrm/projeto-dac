@@ -16,7 +16,7 @@
             <div class="account-wall">
                 <img class="profile-img" src="../../assets/img/icon-user.png"
                     alt="">
-                <form #formLogin="ngForm" class="form-signin">
+                <form #formLogin="ngForm" class="form-signin" (keydown.enter)="logar()">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email" id="email" name="email"
                             [(ngModel)]="login.login" #email="ngModel" required autofocus>

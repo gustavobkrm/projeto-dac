@@ -7,5 +7,6 @@ export class Conta {
         public criacao? : Date,
         public limite? : number,
         public historico? : Operacao[],
+        public saldoConta : number = 0,
     ) {}
 }
