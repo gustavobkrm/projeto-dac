@@ -2,6 +2,7 @@ import { formatCurrency } from '@angular/common';
 import { Injectable, OnInit } from '@angular/core';
 import { find, from, min, Observable, of, pipe } from 'rxjs';
 import { Cliente, Gerente, Login, User } from 'src/app/shared/models';
+import { Conta } from 'src/app/shared/models/conta.model';
 
 const LS_CHAVE: string = "usuarioLogado";
 const LS_USUARIOS: string = "usuariosCadastrados";
@@ -87,6 +88,18 @@ export class AuthService implements OnInit{
  
      return gerente;
   }
+
+    getClienteByNumberAcount(numeroConta : number): Cliente | undefined{
+      let clientes: Cliente[] = this.getAllClientes();
+      let cliente;
+      clientes.forEach((obj)=>{
+        if(obj.conta?.conta == numeroConta){
+          cliente = obj;
+        }
+      });
+
+      return cliente;
+    }
 
   getGerenteById(id: number) {
     let gerentes = this.getAllGerentes();

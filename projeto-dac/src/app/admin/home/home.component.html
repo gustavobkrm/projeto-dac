@@ -1,27 +1,24 @@
 <div class="container-fluid background-page row">
     <div class="container">
         <h1 class="title">Dashboard</h1>
-        <div class="card col-md-6">
-            <div class="card-header row" style="margin: auto 0 !important">
-                <p class="fa fa-suitcase"></p>
-                <p class="text-muted">Gerentes</p>
-            </div>
-            <div class="card-body">
-                <canvas id="clientesGerentes"></canvas>
-            </div>
-        </div>
+        
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Gerentes</th>
+                    <th>Quantidade de Clientes</th>
+                    <th>Somatoria saldo positivo</th>
+                    <th>Somatoria saldos negativos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let gerente of gerentes" class="position-relative">
+                    <td> {{gerente.nome}}</td>
+                    <td> {{getGerenteLength(gerente)}} </td>
+                    <td> {{"--"}} </td>
+                    <td> {{"--"}} </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-
-<script>
-    var clg = document.getElementById("clientesGerentes");
-
-    var chart2 = new Chart(clg, {
-        type: "bar",
-   
-    });
-
-</script>
