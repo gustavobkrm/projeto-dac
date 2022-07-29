@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Cliente, Gerente } from 'src/app/shared/models';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Cliente } from 'src/app/shared/models';
 import { GerenteService } from '../services/gerente.service';
 
 @Component({
@@ -9,26 +10,22 @@ import { GerenteService } from '../services/gerente.service';
 })
 export class ListarClienteComponent implements OnInit {
   
+  @ViewChild('formFiltrar') formFiltrar! : NgForm;
+
   clientes : Cliente[] | undefined = [];
 
-  constructor(private gerenteService: GerenteService) { }
+  constructor(private gerenteService : GerenteService) { }
 
   ngOnInit(): void {
-    this.clientes = this.retornaClientes();
-    console.log(this.clientes);
-  }
-
-  aprovarCliente(cliente: Cliente){
-    this.gerenteService.aprovarCliente(cliente);
     this.clientes = this.retornaClientes();
   }
 
   retornaClientes(): Cliente[] | undefined{
-     return this.gerenteService.retornaClientes();
+    return this.gerenteService.retornaClientes();
+ }
+
+  filtrar() {
+    
   }
 
-  rejeitarCliente(cliente: Cliente){
-      this.gerenteService.rejeitarCliente(cliente);
-      this.clientes = this.retornaClientes();
-  }
 }

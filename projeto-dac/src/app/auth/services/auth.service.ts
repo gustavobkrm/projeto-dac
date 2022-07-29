@@ -132,6 +132,18 @@ export class AuthService implements OnInit{
       return null;
     }
   }
+  
+  getClienteById(id: number) : Cliente | null {
+    let clientes: Cliente[] = this.getAllClientes();
+    let cliente;
+
+    cliente = clientes.find(cliente => cliente.id == id);
+    if(cliente) {
+      return cliente;
+    } else {
+      return null;
+    }
+  }
 
   getClienteByEmail(email: string):Cliente | null{
     let clientes: Cliente[] = this.getAllClientes();

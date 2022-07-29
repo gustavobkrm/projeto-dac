@@ -8,6 +8,7 @@ const LS_CHAVE = "clientes";
 })
 export class GerenteService {
   gerente!: Gerente;
+  cliente!: Cliente;
 
   constructor(private authService: AuthService) { 
     this.gerente = authService.usuarioLogado; 
@@ -62,6 +63,14 @@ export class GerenteService {
     console.log(listClientes);
       return listClientes;
   } 
+
+  findById(id: number) : Cliente | null {
+    return this.authService.getClienteById(id);
+  }
+
+  filtrarCliente() {
+
+  }
 
   
 }

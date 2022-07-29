@@ -5,20 +5,20 @@
         <thead>
             <tr>
                 <th>CPF</th>
-                <th>nome</th>
-                <th>Salario</th>
-                <th>Endereço</th>
-                <th>Saldo da Conta</th>
+                <th>Nome</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Saldo da conta</th>
             </tr>
         </thead>
         <tbody>
            <!-- <tr *ngFor="let cliente of clientes" class="position-relative">-->
             <tr *ngFor="let cliente of clientes" class="position-relative">
-                <td> {{cliente.cpf}}</td>
+                <td> {{cliente.cpf! | mask: "000.000.000-00"}} </td>
                 <td> {{cliente.nome}} </td>
-                <td> {{cliente.salario}} </td>
-                <td> {{cliente.endereco}} </td>
-                <td> {{cliente.conta?.saldoConta}}</td>
+                <td> {{cliente?.endereco?.cidade}} </td>
+                <td> {{cliente?.endereco?.estado}} </td>
+                <td> {{cliente.conta?.saldoConta | currency}} </td>
             </tr>
         </tbody>
     </table>

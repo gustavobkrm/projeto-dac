@@ -8,6 +8,8 @@ import { GerenteService } from './services/gerente.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxMaskModule } from 'ngx-mask';
+import { ModalRejeitarComponent } from './modal-rejeitar/modal-rejeitar.component';
+import { VisualizarClienteComponent } from './visualizar-cliente';
 
 
 @NgModule({
@@ -15,19 +17,23 @@ import { NgxMaskModule } from 'ngx-mask';
     HomeComponent,
     ListarClienteComponent,
     BuscarClienteComponent,
-    Top5ClientesComponent
+    Top5ClientesComponent,
+    ModalRejeitarComponent,
+    VisualizarClienteComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    RouterModule
   ],
   exports: [
     HomeComponent,
     ListarClienteComponent,
     BuscarClienteComponent,
     Top5ClientesComponent,
-    RouterModule
+    ModalRejeitarComponent,
+    VisualizarClienteComponent    
   ],
   providers: [
     GerenteService
