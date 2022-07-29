@@ -3,13 +3,14 @@ import { Cliente, User, Endereco } from 'src/app/shared/models';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Conta } from 'src/app/shared/models/conta.model';
 
 const LS_CHAVE : string = "account";
 @Injectable({
   providedIn: 'root'
 })
 export class CreateAccountService {
-
+  nroConta: number = 1000;
   enderecos! : Endereco;
 
   constructor(private http : HttpClient,
@@ -35,6 +36,9 @@ export class CreateAccountService {
     
     cliente.id = new Date().getTime();
     cliente.perfil = 'CLIENTE';
+    cliente = this.insertConta(cliente);
+    console.log(cliente);
+    //cliente.conta = metodo da Conta;
     
     this.authService.adicionarUsuarioPendente(cliente);
   }
@@ -64,5 +68,20 @@ export class CreateAccountService {
     console.log(endereco);
     return endereco;
     
+  }
+
+  private insertConta(cliente: Cliente) : Cliente{
+      cliente.conta = new Conta;
+
+      if (cliente.salario && cliente.salario >= 2000)
+        cliente.conta.limite = cliente.salario/2;
+      
+      cliente.conta.criacao = new Date();
+      cliente.conta.id = this.nroConta;
+      this.nroConta++;
+      cliente.conta.saldoConta = 0;
+      console.log(3)
+
+    return cliente;
   }
 }
