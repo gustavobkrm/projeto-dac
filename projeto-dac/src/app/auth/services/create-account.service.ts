@@ -10,7 +10,6 @@ const LS_CHAVE : string = "account";
   providedIn: 'root'
 })
 export class CreateAccountService {
-  nroConta: number = 1000;
   enderecos! : Endereco;
 
   constructor(private http : HttpClient,
@@ -77,8 +76,7 @@ export class CreateAccountService {
         cliente.conta.limite = cliente.salario/2;
       
       cliente.conta.criacao = new Date();
-      cliente.conta.id = this.nroConta;
-      this.nroConta++;
+      cliente.conta.id = new Date().getTime();
       cliente.conta.saldoConta = 0;
       console.log(3)
 
