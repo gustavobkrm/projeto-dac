@@ -3,9 +3,9 @@
     <form #formFiltrar="ngForm" class="mt-4 mb-4">
         <div class="form-group">
             <label for="cpf">Filtrar:</label>
-            <input type="text" class="form-control" id="cpf" name="cpf" >
+            <input type="text" class="form-control" id="cpf" name="cpf" (keyup)="filtrar($event)" >
         </div>
-        <button type="button" class="btn btn-primary btn-block mt-3" (onKeyUp)="filtrar()" [disabled]="!formFiltrar.form.valid">
+        <button type="button" class="btn btn-primary btn-block mt-3"  [disabled]="!formFiltrar.form.valid">
             <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
             Buscar
         </button>

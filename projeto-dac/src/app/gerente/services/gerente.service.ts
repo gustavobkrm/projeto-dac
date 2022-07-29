@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { from } from 'rxjs';
 import { AuthService } from 'src/app/auth';
 import { Cliente, Gerente } from 'src/app/shared/models';
 
@@ -68,8 +69,41 @@ export class GerenteService {
     return this.authService.getClienteById(id);
   }
 
-  filtrarCliente() {
+  getClienteByName(nome : string) : Cliente[] | undefined{
+   
+   if(this.gerente.clientes){
 
+     return this.gerente.clientes.filter((cliente) => {  
+      if(cliente.nome != null && nome != ''){
+        if(cliente.nome?.indexOf(nome) >= 0){
+          return true;
+        }}
+        return false;  
+    });
+    }
+    return undefined;
+  }
+
+  getClienteByCpf(cpf : string): Cliente[] | undefined{
+     if(this.gerente.clientes){
+    
+     return this.gerente.clientes.filter((cliente) => {  
+      if(cliente.cpf != null && cpf != ''){
+        if(cliente.cpf?.indexOf(cpf) >= 0){
+          return true;
+        }}
+        return false;  
+    });
+    }
+    return undefined;
+  }
+  filtrarCliente(valor : string) : Cliente[] | undefined{
+    
+     if(isNaN(Number(valor))){
+        return this.getClienteByName(valor);
+     }else{
+       return this.getClienteByCpf(valor);
+     }
   }
 
   

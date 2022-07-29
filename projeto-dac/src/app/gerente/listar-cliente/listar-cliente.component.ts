@@ -11,7 +11,7 @@ import { GerenteService } from '../services/gerente.service';
 export class ListarClienteComponent implements OnInit {
   
   @ViewChild('formFiltrar') formFiltrar! : NgForm;
-
+  busca: string = '';
   clientes : Cliente[] | undefined = [];
 
   constructor(private gerenteService : GerenteService) { }
@@ -24,8 +24,9 @@ export class ListarClienteComponent implements OnInit {
     return this.gerenteService.retornaClientes();
  }
 
-  filtrar() {
-    
+  filtrar($event: any) {
+    this.busca = $event.target.value;
+    this.clientes = this.gerenteService.filtrarCliente(this.busca);
   }
 
 }
