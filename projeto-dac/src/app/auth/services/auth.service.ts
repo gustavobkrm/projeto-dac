@@ -1,6 +1,6 @@
 import { formatCurrency } from '@angular/common';
 import { Injectable, OnInit } from '@angular/core';
-import { find, from, min, Observable, of } from 'rxjs';
+import { find, from, min, Observable, of, pipe } from 'rxjs';
 import { Cliente, Gerente, Login, User } from 'src/app/shared/models';
 
 const LS_CHAVE: string = "usuarioLogado";
@@ -88,8 +88,8 @@ export class AuthService implements OnInit{
       (pro?.clientes?.length !== undefined ? pro.clientes.length : 0)  ? -1 : 1)
     )
     .subscribe( x => {  gerente = x });
-
-      return gerente;
+ 
+     return gerente;
   }
 
   getGerenteById(id: number) {
@@ -102,6 +102,8 @@ export class AuthService implements OnInit{
       return null;
     }
   }
+
+
   deleteUserById(id: number){
     console.log(id);
     let users = this.usuariosCadastrados;
@@ -113,12 +115,13 @@ export class AuthService implements OnInit{
   updateUser(user: User) {
     let users = this.usuariosCadastrados;
     console.log(user);
-    users.forEach((obj) => {
+    
+    users.forEach((obj,index,array) => {
       if(obj.id == user.id){
-        obj = user;
+        array[index] = user;
       }
     });
-    console.log(users);
+
     this.usuariosCadastrados = users;
   }
   
@@ -153,6 +156,7 @@ export class AuthService implements OnInit{
         throw new Error("Erro de cadastro, email ja esta em uso");      
       }else{
         gerente.clientes?.push(cliente);
+
         this.updateUser(gerente);    
       }
  }

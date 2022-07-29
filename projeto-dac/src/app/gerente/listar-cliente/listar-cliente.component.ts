@@ -15,6 +15,7 @@ export class ListarClienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientes = this.retornaClientes();
+    console.log(this.clientes);
   }
 
   aprovarCliente(cliente: Cliente){

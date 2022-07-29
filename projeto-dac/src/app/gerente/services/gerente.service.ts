@@ -44,6 +44,7 @@ export class GerenteService {
           clientes.push(cliente); 
       })  
     };
+
     return clientes;
   }
 

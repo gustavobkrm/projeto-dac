@@ -36,7 +36,6 @@ export class CreateAccountService {
     cliente.id = new Date().getTime();
     cliente.perfil = 'CLIENTE';
     
-    
     this.authService.adicionarUsuarioPendente(cliente);
   }
 
