@@ -10,6 +10,7 @@ const LS_USUARIOS: string = "usuariosCadastrados";
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
+  
  
   
   constructor() {     
@@ -52,11 +53,6 @@ export class AuthService implements OnInit{
    
     let users :User[] = this.usuariosCadastrados;
     let user;
-    
-    if(!users.length){
-      users.push(new User(1,"Admin","Admin","Admin","ADMIN"));
-      this.usuariosCadastrados =  users;
-    }
     
     user = users.find(user =>  user.email == login.login && user.senha == login.senha);
     if(user != undefined){
@@ -160,5 +156,11 @@ export class AuthService implements OnInit{
         this.updateUser(gerente);    
       }
  }
+
+ resete() {
+    let users : User[] = [];
+    users.push(new User(1,"Admin","Admin","Admin","ADMIN"));
+    this.usuariosCadastrados = users;
+  }
 
 }

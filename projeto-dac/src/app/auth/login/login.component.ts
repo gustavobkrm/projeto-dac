@@ -47,6 +47,14 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  resete($event: any): void{
+    $event.preventDefault();
+    if (confirm(`Deseja realmente resetar a base de dados ????`)) {   
+      this.authService.resete();
+      this.users = this.authService.usuariosCadastrados;
+    } 
+  }
+
 
 
   logar() : void {
