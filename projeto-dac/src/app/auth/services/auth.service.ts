@@ -53,7 +53,7 @@ export class AuthService implements OnInit{
    
     let users :User[] = this.usuariosCadastrados;
     let user;
-    
+
     user = users.find(user =>  user.email == login.login && user.senha == login.senha);
     if(user != undefined){
       return of(user);
@@ -147,10 +147,7 @@ export class AuthService implements OnInit{
   adicionarUsuarioPendente(cliente: Cliente) {
     let gerente = this.getGerenteByCliente();
  
-    if(cliente.email !== undefined)
-      if(this.getClienteByEmail(cliente.email)){
-        throw new Error("Erro de cadastro, email ja esta em uso");      
-      }else{
+    if(cliente.email !== undefined){
         gerente.clientes?.push(cliente);
 
         this.updateUser(gerente);    
