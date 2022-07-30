@@ -6,16 +6,16 @@
 Tela cliente <br>
 -> cadastro de cliente: inserir crud na tela de criar cliente ✅ (botao de cep nao funciona) <br>
 -> login flagado ✅<br>
--> home ❌<br>
--> operaçoes (deposito - saque - transferencia) ❌ <br>
--> consultar saldo e extrato ❌ <br>
+-> home ⌛<br>
+-> operaçoes (deposito - saque - transferencia) ⌛ <br>
+-> consultar saldo e extrato ⌛ <br>
 
 ====================================================== <br>
 
 Tela gerente <br>
 -> login flagado ✅ <br>
 -> home ✅<br>
--> consultar cliente (tudo) ⌛ <br>
+-> consultar cliente (tudo) ✅ <br>
 -> consultar cliente (especifico) ✅ <br>
 -> consultar 5 melhores clientes ✅ <br>
 
@@ -23,7 +23,7 @@ Tela gerente <br>
 
 Tela adm <br>
 -> login flagado ✅<br>
--> home ⌛<br>
+-> home ✅<br>
 -> crud gerente ✅ <br>
 
 ====================================================== 
