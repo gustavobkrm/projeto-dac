@@ -2,26 +2,18 @@
 <div *ngIf="usuarioLogado" class="conteiner-fluid">
     <nav class="navbar navbar-expand-md navbar-dark menu-color">
         <a *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="navbar-brand nav-link" href="#" [routerLink]="['/cliente']">
-            <i class="fa fa-building-columns" style="color: white;"></i> {{ usuarioLogado.nome }} </a>
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
         <a *ngIf="usuarioLogado.perfil === 'ADMIN'" class="navbar-brand nav-link" href="#" [routerLink]="['/admin']">
-            <i class="fa fa-building-columns" style="color: white;"></i> {{ usuarioLogado.nome }} </a>
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
         <a *ngIf="usuarioLogado.perfil === 'GERENTE'" class="navbar-brand nav-link" href="#" [routerLink]="['/gerente']">
-            <i class="fa fa-building-columns" style="color: white;"></i> {{ usuarioLogado.nome }} </a>
+            <i class="fa fa-building-columns" style="color: white;"></i> {{ title }} </a>
             <div class="navbar-collapse collapsed justify-content-between" id="navbarContent">
             <ul class="navbar-nav mr-auto">
     
                 <!-- CLIENTE --> 
-                    <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['/depositar']">Depositar</a></li>
-                    <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['/saque']">Saque</a></li>
-                    <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['/transferencia']">Tranferência</a></li>
-                    <li *ngIf="usuarioLogado.perfil === 'CLIENTE'" class="nav-item">
-                        <a class="nav-link" href="#" [routerLink]="['/saldo']">Saldo</a></li>
                     <li *ngIf="usuarioLogado.perfil === 'CLIENTE'"class="nav-item">
                         <a class="nav-link" href="#" [routerLink]="['/extrato']">Extrato</a></li>
-
+                        
                     <!-- GERENTE -->
                     <li *ngIf="usuarioLogado.perfil === 'GERENTE'" class="nav-item">
                         <a class="nav-link" href="#" [routerLink]="['/listar-cliente']">Lista clientes</a></li>
@@ -37,22 +29,6 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="#" (click)="logout()">Logout</a>
-                </li>
-                <li class="nav-item" ngbDropdown>
-                    <div ngbDropdown Menu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-                        <a ngbDropdownItem href="#" [routerLink]="['/home']" (click)="$event.preventDefault()">Home</a>
-                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" [routerLink]="['/depositar']" (click)="$event.preventDefault()">Depositar</a>
-                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" [routerLink]="['/saque']" (click)="$event.preventDefault()">Saque</a>
-                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" [routerLink]="['/transferencia']" (click)="$event.preventDefault()">Transferência</a>
-                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" [routerLink]="['/saldo']" (click)="$event.preventDefault()">Saldo</a>
-                        <a *ngIf="usuarioLogado.perfil ==='CLIENTE'" ngbDropdownItem href="#" [routerLink]="['/extrato']" (click)="$event.preventDefault()">Extrato</a>
-                        
-                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/listar-cliente']" (click)="$event.preventDefault()">Listar clientes</a>
-                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/buscar-cliente']" (click)="$event.preventDefault()">Buscar clientes</a>
-                        <a *ngIf="usuarioLogado.perfil ==='GERENTE'" ngbDropdownItem href="#" [routerLink]="['/top5-clientes']" (click)="$event.preventDefault()">5 Melhores clientes</a>
-                        
-                        <a *ngIf="usuarioLogado.perfil ==='ADMIN'" ngbDropdownItemhref="#" [routerLink]="['/listar-gerente']" (click)="$event.preventDefault()">Gerentes</a>
-                    </div>
                 </li>
             </ul>
         </div>

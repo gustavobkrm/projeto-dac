@@ -4,11 +4,11 @@ import { HomeComponent } from './home/';
 import { DepositarComponent } from './depositar/depositar.component';
 import { SaqueComponent } from './saque/saque.component';
 import { TransferenciaComponent } from './transferencia/transferencia.component';
-import { SaldoComponent } from './saldo/saldo.component';
 import { ExtratoComponent } from './extrato/extrato.component';
 import { ClienteService } from './services/cliente.service';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -17,19 +17,19 @@ import { RouterModule } from '@angular/router';
     DepositarComponent,
     SaqueComponent,
     TransferenciaComponent,
-    SaldoComponent,
     ExtratoComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     HomeComponent,
     DepositarComponent,
     SaqueComponent,
     TransferenciaComponent,
-    SaldoComponent,
     ExtratoComponent
   ],
   providers: [

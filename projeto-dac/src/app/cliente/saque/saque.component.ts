@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Cliente } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-saque',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaqueComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('formMotivo') formMotivo! : NgForm;
+  
+  @Input() cliente! : Cliente;
+  clientes : Cliente[] | undefined = [];
+
+  constructor(public activeModal : NgbActiveModal) { }
 
   ngOnInit(): void {
   }

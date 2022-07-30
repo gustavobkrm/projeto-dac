@@ -9,7 +9,7 @@ import { User } from './shared/models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'projeto-dac';
+  title = 'TADeSco';
 
   constructor(
     private router: Router, private authService: AuthService) { }

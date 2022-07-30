@@ -26,7 +26,11 @@ export class ListarClienteComponent implements OnInit {
 
   filtrar($event: any) {
     this.busca = $event.target.value;
-    this.clientes = this.gerenteService.filtrarCliente(this.busca);
+    if(this.busca == '' ) {
+      this.clientes = this.gerenteService.retornaClientes();
+    } else {
+      this.clientes = this.gerenteService.filtrarCliente(this.busca);
+    }   
   }
 
 }

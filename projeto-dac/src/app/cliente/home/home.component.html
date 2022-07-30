@@ -1,1 +1,35 @@
-<p>CLIENTEEEEE</p>
+<div class="container-fluid background-page row" >
+    <div class="container">
+        <h1 *ngIf="usuarioLogado" class="title fw-bold">Olá, {{usuarioLogado.nome}}</h1>
+        <div *ngIf="cliente" class="row d-flex justify-content-center mt-5 mb-5">
+            <h3 class="title fw-bold col-sm-2">Saldo: <span> {{cliente.conta?.saldoConta | currency}} </span></h3>
+            <h3 class="title fw-bold col-sm-2">Limite: <span> {{cliente.conta?.limite | currency}} </span></h3>
+        </div>
+        <div *ngIf="clientes" class="row d-flex justify-content-center">
+            <div class="cliente-box bg-success bg-gradient" id="deposito">
+                <div class="icon">
+                    <i class="fa fa-credit-card-alt  fw-bold" aria-hidden="true"></i>
+                </div>
+               <button class="btn btn-link text-decoration-none fs-2 fw-bold text-white float-end" (click)="depositar()">Depositar</button>
+            </div>
+            <div class="cliente-box bg-danger bg-gradient" id="saque">
+                <div class="icon">
+                    <i class="fa fa-credit-card-alt  fw-bold" aria-hidden="true"></i>
+                </div>         
+                <button class="btn btn-link text-decoration-none fs-2 fw-bold text-white float-end" (click)="saque()">Saque</button>
+            </div>
+            <div class="cliente-box bg-warning bg-gradient" id="transferencia">
+                <div class="icon">
+                    <i class="fa fa-exchange fw-bold" aria-hidden="true"></i>
+                </div>            
+                <button class="btn btn-link text-decoration-none fs-2 fw-bold text-white float-end" (click)="transferir()">Transferência</button>
+            </div>
+            <a [routerLink]="['/extrato']" href="#" class="cliente-box bg-primary bg-gradient" id="extrato">
+                <div class="icon">
+                    <i class="fa fa-file-text fw-bold" aria-hidden="true"></i>
+                </div>
+                <p class="btn btn-link text-decoration-none fs-2 fw-bold text-white float-end">Extrato</p>
+            </a>
+        </div>
+    </div>
+</div>
