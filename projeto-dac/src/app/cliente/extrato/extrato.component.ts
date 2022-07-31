@@ -3,6 +3,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { AuthService } from 'src/app/auth';
 import { Cliente, User } from 'src/app/shared/models';
 import { Operacao } from 'src/app/shared/models/operacao.model';
+import { ClienteService } from '../services/cliente.service';
 @Component({
   selector: 'app-extrato',
   templateUrl: './extrato.component.html',
@@ -16,7 +17,8 @@ export class ExtratoComponent implements OnInit {
 
   @ViewChild('formExtrato') formExtrato! : NgModel; 
 
-  constructor(private authService : AuthService) {
+  constructor(private authService : AuthService,
+              private clienteService: ClienteService ) {
   }
   
   ngOnInit(): void {
@@ -27,9 +29,10 @@ export class ExtratoComponent implements OnInit {
   }
 
   busca(){
-    console.log(this.dataInicio);
-    console.log(this.dataFim);
-
+   let array =  this.clienteService.filtroData(this.dataInicio,this.dataFim);
+    if(array != []){
+      this.operacoes = array;
+    }
   }
 
 }
