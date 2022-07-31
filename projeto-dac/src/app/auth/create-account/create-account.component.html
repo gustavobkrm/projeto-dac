@@ -15,10 +15,11 @@
                 </div>
                 <div class="form-group wrap-input">
                     <span class="label-input ">Email *</span>
-                    <input type="email" class=" form-input" id="email" name="email" placeholder="Digite o email" [(ngModel)]="cliente.email" #email="ngModel" required> 
+                    <input type="email" class=" form-input" id="email" name="email" placeholder="Digite o email" [(ngModel)]="cliente.email" #email="ngModel" [email]="true" required> 
                 </div>
                 <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
                     <div [hidden]="!email.errors?.['required']">Campo Email é obrigatório.</div>
+                    <div [hidden]="!email.errors?.['email']">Email inválido.</div>
                 </div> 
                 <div class="form-group wrap-input">
                     <span class="label-input ">CPF *</span>
@@ -54,31 +55,49 @@
                 <div class="form-group col">
                     <button type="button" class="btn btn-info btn-lg" (click)="consultaCEP()" style="margin: 12px auto;" [disabled]="!endereco.cep">Buscar</button>    
                 </div>
+                <div *ngIf="cep.errors && (cep.dirty || cep.touched)" class="alert alert-danger">
+                    <div [hidden]="!cep.errors?.['required']">Campo CEP é obrigatório.</div>
+                    <div [hidden]="!cep.errors?.['mask']">CEP inválido.</div>
+                </div>
                 <div *ngIf="endereco" class="row justify-content-between">
                     <div class="form-group wrap-input col-8">
                         <span class="label-input ">Logradouro *</span>
-                        <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro"  [(ngModel)]="endereco.logradouro" required> 
+                        <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro"  [(ngModel)]="endereco.logradouro"  #logradouro="ngModel" required> 
                     </div>
-                        
+                    <div *ngIf="logradouro.errors && (logradouro.dirty || logradouro.touched)" class="alert alert-danger">
+                        <div [hidden]="!logradouro.errors?.['required']">Campo Logradouro é obrigatório.</div>
+                    </div>                        
                     <div class="form-group wrap-input col-3">
                         <span class="label-input ">Número *</span>
-                        <input type="text" class=" form-input" id="numero" name="numero"  placeholder="Digite o n°" [(ngModel)]="endereco.numero" required> 
+                        <input type="number" class=" form-input" id="numero" name="numero"  placeholder="Digite o n°" [(ngModel)]="endereco.numero" #numero="ngModel" required> 
+                    </div>
+                    <div *ngIf="numero.errors && (numero.dirty || numero.touched)" class="alert alert-danger">
+                        <div [hidden]="!numero.errors?.['required']">Campo Número é obrigatório.</div>
                     </div>
                     <div class="form-group wrap-input col-5">
                         <span class="label-input ">Complemento</span>
                         <input type="text" class=" form-input" id="complemento" name="complemento" placeholder="Digite o complemento" [(ngModel)]="endereco.complemento"> 
                     </div>
                     <div class="form-group wrap-input col-6">
-                        <span class="label-input ">Bairro</span>
-                        <input type="text" class=" form-input" id="bairro" name="bairro"  placeholder="Digite o bairro" [(ngModel)]="endereco.bairro" required>
+                        <span class="label-input ">Bairro *</span>
+                        <input type="text" class=" form-input" id="bairro" name="bairro"  placeholder="Digite o bairro" [(ngModel)]="endereco.bairro" #bairro="ngModel" required>
+                    </div>
+                    <div *ngIf="bairro.errors && (bairro.dirty || bairro.touched)" class="alert alert-danger">
+                        <div [hidden]="!bairro.errors?.['required']">Campo Bairro é obrigatório.</div>
                     </div>
                     <div class="form-group wrap-input col-5">
                         <span class="label-input ">Cidade *</span>
-                        <input type="text" class=" form-input" id="cidade" name="cidade" placeholder="Digite a cidade" [(ngModel)]="endereco.cidade" required> 
+                        <input type="text" class=" form-input" id="cidade" name="cidade" placeholder="Digite a cidade" [(ngModel)]="endereco.cidade" #cidade="ngModel" required> 
+                    </div>
+                    <div *ngIf="cidade.errors && (cidade.dirty || cidade.touched)" class="alert alert-danger">
+                        <div [hidden]="!cidade.errors?.['required']">Campo Cidade é obrigatório.</div>
                     </div>
                     <div class="form-group wrap-input col-6">
                         <span class="label-input ">Estado *</span>
-                        <input type="text" class=" form-input" id="estado" name="estado" placeholder="Digite o estado" [(ngModel)]="endereco.estado" required>
+                        <input type="text" class=" form-input" id="estado" name="estado" placeholder="Digite o estado" [(ngModel)]="endereco.estado" #estado="ngModel" required>
+                    </div>
+                    <div *ngIf="estado.errors && (estado.dirty || estado.touched)" class="alert alert-danger">
+                        <div [hidden]="!estado.errors?.['required']">Campo Estado é obrigatório.</div>
                     </div>
                 </div>
                 <div class="form-group position-relative">

@@ -6,7 +6,6 @@ import { CreateGerenteComponent } from './create-gerente';
 import { HomeComponent } from './home';
 import { AdminService } from './services/admin.service';
 import { ModalGerenteComponent } from './modal-gerente/modal-gerente.component';
-import { NumericoDirective } from '../shared/directives/numerico.directive';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -21,8 +20,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
     UpdateGerenteComponent,
     CreateGerenteComponent,
     HomeComponent,
-    ModalGerenteComponent,
-    NumericoDirective
+    ModalGerenteComponent
   ],
   imports: [
     CommonModule,

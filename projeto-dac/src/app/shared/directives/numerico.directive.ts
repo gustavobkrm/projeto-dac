@@ -1,25 +1,26 @@
 import { Directive, HostListener, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[numerico]',
+  selector: '[number]',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: NumericoDirective,
     multi: true
   }]
 })
-export class NumericoDirective {
+export class NumericoDirective implements ControlValueAccessor{
 
   onChange: any;
   onTouched: any;
 
-  @HostListener('keyup', ['$event'])onKeyUp($event: any) {
+  @HostListener('keyup', ['$event'])
+  onKeyUp($event: any) {
     let valor = $event.target.value;
     valor = valor.replace(/[\D]/g, '');
     $event.target.value= valor;
-    this.onChange(valor);
   }
+
   constructor(private el: ElementRef) { }
 
   registerOnChange(fn: any): void{
