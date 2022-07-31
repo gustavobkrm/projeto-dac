@@ -11,18 +11,14 @@ import { GerenteService } from '..';
 export class Top5ClientesComponent implements OnInit {  
     clientes : Cliente[] | undefined = [];
   
-    constructor(private authService : AuthService, private gerenteService: GerenteService) { }
+    constructor(private gerenteService: GerenteService) { }
   
     ngOnInit(): void {
       this.clientes = this.retornaTopCinco();
     }
-  
-    retornaClientes(): Cliente[] | undefined{
-       return this.authService.getAllClientes();
-    }
-
+    
     retornaTopCinco(): Cliente[] | undefined{
-      return this.gerenteService.retornaTopCinco(this.retornaClientes());
+      return this.gerenteService.retornaTopCinco();
     }
   
   }

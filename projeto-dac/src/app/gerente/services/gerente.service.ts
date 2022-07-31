@@ -51,10 +51,11 @@ export class GerenteService {
     return clientes;
   }
 
-  retornaTopCinco(clientes: Cliente[] | undefined): Cliente[] | undefined {
-    let listClientes: Cliente[] | undefined = [];    
-    if (clientes !== undefined){
-      listClientes = clientes.sort(function (a, b) {
+  retornaTopCinco(): Cliente[] | undefined {
+    let listClientes = this.gerente.clientes;
+
+    if (listClientes !== undefined){
+      listClientes = listClientes.sort(function (a, b) {
         if (a.conta?.saldoConta === undefined) return 1;
         if (b.conta?.saldoConta === undefined) return -1;
         if (a.conta?.saldoConta === b.conta.saldoConta) return 0;
