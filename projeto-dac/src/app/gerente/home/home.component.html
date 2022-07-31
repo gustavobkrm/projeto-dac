@@ -15,7 +15,7 @@
                     <td> {{cliente.cpf! | mask:"000.000.000-00"}}</td>
                     <td> {{cliente.nome}} </td>
                     <td> {{cliente.salario | currency}} </td>
-                    <td class="text-center" style="width: 15%">
+                    <td class="text-center" style="width: 20%">
                         <button (click)="aprovarCliente(cliente)" href="#" title="Aprovar" alt="Aprovar"
                             class="btn btn-xs btn-success button-list">Aprovar</button>
                         <button (click)="abrirModal(cliente)" href="#" title="Recusar" alt="Recusar"
