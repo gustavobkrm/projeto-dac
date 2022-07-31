@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-sm-2 text-center">
                     <p class="fw-bold" id="conta">{{cliente.conta?.conta ? cliente.conta?.conta  : '--' }}</p>
-                    <p class="fw-bold" id="criacao">{{cliente.conta?.criacao ? cliente.conta?.criacao : '--' }}</p>
+                    <p class="fw-bold" id="criacao">{{cliente.conta?.criacao! | date:'medium'}}</p>
                     <p class="fw-bold" id="limite">{{cliente.conta?.limite! | currency }}</p>
                     <p class="fw-bold" id="saldo">{{cliente.conta?.saldoConta! | currency }}</p>
                 </div>

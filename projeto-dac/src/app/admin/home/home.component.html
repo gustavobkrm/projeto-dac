@@ -7,7 +7,7 @@
                 <tr>
                     <th>Gerentes</th>
                     <th>Quantidade de Clientes</th>
-                    <th>Somatoria saldo positivo</th>
+                    <th>Somatoria saldos positivos</th>
                     <th>Somatoria saldos negativos</th>
                 </tr>
             </thead>
@@ -15,10 +15,11 @@
                 <tr *ngFor="let gerente of gerentes" class="position-relative">
                     <td> {{gerente.nome}}</td>
                     <td> {{getGerenteLength(gerente)}} </td>
-                    <td> {{"--"}} </td>
-                    <td> {{"--"}} </td>
+                    <td> {{"0" | currency}} </td>
+                    <td> {{"0" | currency}} </td>
                 </tr>
             </tbody>
         </table>
+        <p *ngIf="gerentes.length==0" class="fs-3 text-center text-secondary fw-bolder">Nenhum gerente cadastrado.</p>
     </div>
 </div>

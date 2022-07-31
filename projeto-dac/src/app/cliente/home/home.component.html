@@ -1,9 +1,9 @@
 <div class="container-fluid background-page row" >
     <div class="container">
-        <h1  class="title fw-bold">Olá, {{cliente.nome}}</h1>
+        <h1  class="title">Olá, {{cliente.nome}}</h1>
         <div class="row d-flex justify-content-center mt-5 mb-5">
-            <h3 class="title fw-bold col-sm-2">Saldo: <span> {{cliente.conta?.saldoConta | currency}} </span></h3>
-            <h3 class="title fw-bold col-sm-2">Limite: <span> {{cliente.conta?.limite | currency}} </span></h3>
+            <h2 class="title fw-bold col-sm-3">Saldo: <span> {{cliente.conta?.saldoConta | currency}} </span></h2>
+            <h2 class="title fw-bold col-sm-3">Limite: <span> {{cliente.conta?.limite | currency}} </span></h2>
         </div>
         <div  class="row d-flex justify-content-center">
             <div class="cliente-box bg-success bg-gradient" id="deposito">

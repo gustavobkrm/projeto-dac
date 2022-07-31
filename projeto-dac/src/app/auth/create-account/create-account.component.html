@@ -58,31 +58,27 @@
                     <div class="form-group wrap-input col-8">
                         <span class="label-input ">Logradouro *</span>
                         <input type="text" class=" form-input" id="logradouro" name="logradouro"  placeholder="Digite o logradouro"  [(ngModel)]="endereco.logradouro" required> 
-                        <span>{{endereco?.logradouro}}</span>
                     </div>
                         
                     <div class="form-group wrap-input col-3">
                         <span class="label-input ">Número *</span>
-                        <input type="text" class=" form-input" id="numero" name="numero"  placeholder="Digite o n°"  [(ngModel)]="endereco.numero" required> 
+                        <input type="text" class=" form-input" id="numero" name="numero"  placeholder="Digite o n°" [(ngModel)]="endereco.numero" required> 
                     </div>
                     <div class="form-group wrap-input col-5">
                         <span class="label-input ">Complemento</span>
-                        <input type="text" class=" form-input" id="complemento" name="complemento"  placeholder="Digite o complemento"> 
+                        <input type="text" class=" form-input" id="complemento" name="complemento" placeholder="Digite o complemento" [(ngModel)]="endereco.complemento"> 
                     </div>
                     <div class="form-group wrap-input col-6">
                         <span class="label-input ">Bairro</span>
-                        <input type="text" class=" form-input" id="bairro" name="bairro"  placeholder="Digite o bairro" required>
-                        <span>{{endereco?.bairro}}</span> 
+                        <input type="text" class=" form-input" id="bairro" name="bairro"  placeholder="Digite o bairro" [(ngModel)]="endereco.bairro" required>
                     </div>
                     <div class="form-group wrap-input col-5">
                         <span class="label-input ">Cidade *</span>
-                        <input type="text" class=" form-input" id="cidade" name="cidade" placeholder="Digite a cidade" [(ngModel)]="endereco.cidade" [value]="endereco.cidade" required> 
-                        <span>{{endereco?.cidade}}</span>
+                        <input type="text" class=" form-input" id="cidade" name="cidade" placeholder="Digite a cidade" [(ngModel)]="endereco.cidade" required> 
                     </div>
                     <div class="form-group wrap-input col-6">
                         <span class="label-input ">Estado *</span>
                         <input type="text" class=" form-input" id="estado" name="estado" placeholder="Digite o estado" [(ngModel)]="endereco.estado" required>
-                        <span *ngIf="endereco">{{endereco?.estado}}</span>
                     </div>
                 </div>
                 <div class="form-group position-relative">
