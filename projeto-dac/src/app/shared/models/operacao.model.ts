@@ -1,11 +1,14 @@
 import { Cliente } from "./cliente.model";
 
 export class Operacao{
+    public dataHoraMovimentacao?: Date;
     
     constructor(
-        public hora_movimentacao?: Date,
         public tipo ?: string,
-        public clienteDestino ?: Cliente,
-        public valor ?: number
-    ){}
+        public valor ?: number,
+        public contaDestino ?: number,
+        public contaOrigem ?: number
+    ){
+        this.dataHoraMovimentacao = new Date();
+    }
 }

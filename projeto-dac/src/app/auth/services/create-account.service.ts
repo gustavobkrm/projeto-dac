@@ -87,17 +87,13 @@ export class CreateAccountService {
   }
 
   private insertConta(cliente: Cliente) : Cliente{
-      cliente.conta = new Conta;
+      cliente.conta = new Conta();
 
       if (cliente.salario && cliente.salario >= 2000)
-        cliente.conta.limite = cliente.salario/2;
+      cliente.conta.limite = cliente.salario/2;
       
-      cliente.conta.criacao = new Date();
-      cliente.conta.id = new Date().getTime();
-      cliente.conta.saldoConta = 0;
       cliente.conta.conta = this.generateNumber();
-      console.log(3)
-
+      
     return cliente;
   }
 }
