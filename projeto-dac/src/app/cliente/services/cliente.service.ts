@@ -91,4 +91,23 @@ export class ClienteService {
       }
     }
   }
+
+  filtroData(dataInicio : string, dataFim : string): Operacao[]{
+      let operacoes : Operacao[] = [];
+      if(this.cliente.conta?.historico){
+        operacoes = this.cliente.conta?.historico.filter( operacao => { 
+          let data;
+          let Inicio = new Date(Number(dataInicio.slice(4,8)),Number(dataInicio.slice(2,4)),Number(dataInicio.slice(0,2)));
+          let Fim = new Date(Number(dataFim.slice(4,8)),Number(dataFim.slice(2,4)),Number(dataFim.slice(0,2)));
+          if(operacao.dataHoraMovimentacao){
+            data = new Date(operacao.dataHoraMovimentacao);
+            if( data >= Inicio && data <= Fim ){
+            return true;
+            }
+          }
+          return false;
+        });
+      }
+      return operacoes;
+  }
 }
