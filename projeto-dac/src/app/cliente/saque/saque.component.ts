@@ -11,7 +11,7 @@ import { ClienteService } from '../services/cliente.service';
 })
 export class SaqueComponent implements OnInit {
 
-  @ViewChild('formMotivo') formMotivo! : NgForm;
+  @ViewChild('formSaque') formSaque! : NgForm;
   @Input() cliente! : Cliente;
   inputValor : number = 0;
 

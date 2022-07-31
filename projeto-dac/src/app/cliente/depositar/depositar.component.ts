@@ -11,7 +11,7 @@ import { ClienteService } from '../services/cliente.service';
 })
 export class DepositarComponent implements OnInit {
 
-  @ViewChild('formMotivo') formMotivo! : NgForm;
+  @ViewChild('formDepositar') formDepositar! : NgForm;
   @Input() cliente! : Cliente;
   inputValor : number = 0;
 

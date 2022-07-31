@@ -9,7 +9,7 @@ import { ClienteService } from '../services/cliente.service';
   styleUrls: ['./transferencia.component.css']
 })
 export class TransferenciaComponent implements OnInit {
-  @ViewChild('formMotivo') formMotivo! : NgForm;
+  @ViewChild('formTransferencia') formTransferencia! : NgForm;
 
   inputValor : number = 0;
   contaDest !: number;
