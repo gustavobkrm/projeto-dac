@@ -1,7 +1,6 @@
 import { Operacao } from "./operacao.model";
 
 export class Conta {
-    public static numero: number = 1000;
 
     constructor(
         public id? : number,
@@ -10,11 +9,5 @@ export class Conta {
         public limite? : number,
         public historico? : Operacao[],
         public saldoConta : number = 0,
-    ) {
-        this.conta = Conta.generateNumber();
-    }
-
-    public static generateNumber(): number{
-        return this.numero++;
-    }
+    ) {}
 }

@@ -4,8 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { AuthService } from './auth.service';
 import { Conta } from 'src/app/shared/models/conta.model';
+import { NumberValueAccessor } from '@angular/forms';
+import { isNumber } from '@ng-bootstrap/ng-bootstrap/util/util';
 
-const LS_CHAVE : string = "account";
+const LS_CHAVE : string = "numberAccount";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,20 +18,34 @@ export class CreateAccountService {
   constructor(private http : HttpClient,
               private authService: AuthService) { }
 
-  listAllClientes() : Cliente[] {
-
-    const clientes = localStorage[LS_CHAVE];
-    return clientes ? JSON.parse(clientes) : [];
-  }
-
-  listAllUsers() : User[] {
-    const users = localStorage[LS_CHAVE];
-    return users ? JSON.parse(users) : [];
-  }
 
   listAllEndereco() : Endereco[] {
     const enderecos = localStorage[LS_CHAVE];
     return enderecos ? JSON.parse(enderecos) : [];
+  }
+
+  public get numberAccount(): number {
+    let number = localStorage[LS_CHAVE];
+    return(number ? JSON.parse(localStorage[LS_CHAVE]) : null);
+  };
+
+  public set numberAccount(number: number) {
+    localStorage[LS_CHAVE] = JSON.stringify(number);
+  };
+
+  generateNumber(){
+    let number = this.numberAccount;
+    console.log(this.numberAccount);
+    if(!number){
+      this.numberAccount = 2000;
+      number = this.numberAccount;
+      console.log("teste1");
+    }else{
+      this.numberAccount = ++number;
+      console.log("teste2");
+    }
+    console.log(number);
+    return number;
   }
 
   insert(cliente : Cliente) : void {
@@ -78,6 +95,7 @@ export class CreateAccountService {
       cliente.conta.criacao = new Date();
       cliente.conta.id = new Date().getTime();
       cliente.conta.saldoConta = 0;
+      cliente.conta.conta = this.generateNumber();
       console.log(3)
 
     return cliente;

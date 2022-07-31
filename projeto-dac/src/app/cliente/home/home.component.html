@@ -1,11 +1,11 @@
 <div class="container-fluid background-page row" >
     <div class="container">
-        <h1 *ngIf="usuarioLogado" class="title fw-bold">Olá, {{usuarioLogado.nome}}</h1>
-        <div *ngIf="cliente" class="row d-flex justify-content-center mt-5 mb-5">
+        <h1  class="title fw-bold">Olá, {{cliente.nome}}</h1>
+        <div class="row d-flex justify-content-center mt-5 mb-5">
             <h3 class="title fw-bold col-sm-2">Saldo: <span> {{cliente.conta?.saldoConta | currency}} </span></h3>
             <h3 class="title fw-bold col-sm-2">Limite: <span> {{cliente.conta?.limite | currency}} </span></h3>
         </div>
-        <div *ngIf="clientes" class="row d-flex justify-content-center">
+        <div  class="row d-flex justify-content-center">
             <div class="cliente-box bg-success bg-gradient" id="deposito">
                 <div class="icon">
                     <i class="fa fa-credit-card-alt  fw-bold" aria-hidden="true"></i>

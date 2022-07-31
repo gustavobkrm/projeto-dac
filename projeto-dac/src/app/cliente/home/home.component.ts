@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth';
 import { Cliente } from 'src/app/shared/models';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { DepositarComponent } from '../depositar';
 import { SaqueComponent } from '../saque';
 import { TransferenciaComponent } from '../transferencia';
@@ -11,30 +11,35 @@ import { TransferenciaComponent } from '../transferencia';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+  cliente !: Cliente;
+
   constructor(private authService : AuthService, private modalService : NgbModal) { }
-  
-  usuarioLogado = this.authService.usuarioLogado;
-  usuarioId = this.authService.usuarioLogado.id as number;
-  cliente = this.authService.getClienteById(this.usuarioId);
-  clientes : Cliente[] | undefined = [];
 
   ngOnInit(): void {
+    this.cliente = this.authService.usuarioLogado;
   }
 
   depositar() {
     const modalRef = this.modalService.open(DepositarComponent);
-
+    this.atualizarUsuario(modalRef);
   }
 
   saque() {
     const modalRef = this.modalService.open(SaqueComponent);
-
+    this.atualizarUsuario(modalRef);
    }
 
    transferir() {
     const modalRef = this.modalService.open(TransferenciaComponent);
-    
+    this.atualizarUsuario(modalRef);
+   }
+
+   atualizarUsuario(modalRef : NgbModalRef){
+    modalRef.result.then(() => { 
+      this.cliente = this.authService.usuarioLogado;
+    }, () => {
+      this.cliente = this.authService.usuarioLogado; 
+    });
    }
 
 }

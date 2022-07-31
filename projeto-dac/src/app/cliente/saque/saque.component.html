@@ -7,11 +7,15 @@
 <div class="modal-body row">
     <form #formMotivo="ngForm" class="mt-4 mb-4">
         <div class="form-group">
-            <label for="motivo">Motivo:</label>
+        <!--     <label for="motivo">Motivo:</label>
             <textarea type="text" class="form-control" id="motivo" name="motivo" style="resize: none;height: 150px;" required></textarea>
+       -->
+       <label for="valor">Valor:</label>
+       <input type="number" class="form-control" id="valor" name="valor" [(ngModel)]="inputValor" #valor="ngModel"  required>
+      
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success" (click)="activeModal.close()" [disabled]="!formMotivo.form.valid">Enviar</button>
+            <button type="button" class="btn btn-success" (click)="saque()" [disabled]="!formMotivo.form.valid">Enviar</button>
         </div>
     </form>
 </div>

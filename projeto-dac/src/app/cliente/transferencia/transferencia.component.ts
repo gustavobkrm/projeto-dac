@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-transferencia',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transferencia.component.css']
 })
 export class TransferenciaComponent implements OnInit {
+  @ViewChild('formMotivo') formMotivo! : NgForm;
 
-  constructor() { }
+  inputValor : number = 0;
+  contaDest !: number;
+
+  constructor(public activeModal : NgbActiveModal,
+              private clienteService : ClienteService) { }
 
   ngOnInit(): void {
+  }
+
+  transferencia(){
+    console.log(this.contaDest);
+    this.clienteService.transferencia(this.contaDest,this.inputValor);
+    this.activeModal.close();
   }
 
 }
