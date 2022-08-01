@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.gerentes = this.authService.getAllGerentes();
+    console.log(this.gerentes);
     
   }
   getGerenteLength(gerente: Gerente) : number{
@@ -21,4 +22,28 @@ export class HomeComponent implements OnInit {
      return 0;
   }
 
+   getSaldoPositivo(gerente: Gerente): number{
+    let somatoriaPositiva: number = 0;
+    if (gerente.clientes)
+      gerente.clientes.forEach(cliente => {
+        if (cliente.conta?.saldoConta && cliente.conta?.saldoConta > 0){
+          somatoriaPositiva += cliente.conta.saldoConta; // somar o saldo de cada cliente positivo 
+
+      };
+    });
+    return somatoriaPositiva;
+   }
+   
+   getSaldoNegativo(gerente: Gerente): number{
+    let somatoriaNegativa: number = 0;
+    let nroNegativo;
+    if (gerente.clientes)
+      gerente.clientes.forEach(cliente => {
+        if (cliente.conta?.saldoConta && cliente.conta?.saldoConta < 0){
+          nroNegativo = cliente.conta.saldoConta * -1;
+          somatoriaNegativa += nroNegativo; // somar o saldo de cada cliente negativado 
+      };
+    });
+    return somatoriaNegativa;
+   }
 }
