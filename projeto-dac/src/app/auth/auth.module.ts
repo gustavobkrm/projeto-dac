@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { NumericoDirective } from '../shared/directives/numerico.directive';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = {};
 @NgModule({
   declarations: [
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    NumericoDirective
   ],
   imports: [
     CommonModule,
