@@ -15,8 +15,8 @@
                 <tr *ngFor="let gerente of gerentes" class="position-relative">
                     <td> {{gerente.nome}}</td>
                     <td> {{getGerenteLength(gerente)}} </td>
-                    <td> {{"0" | currency}} </td>
-                    <td> {{"0" | currency}} </td>
+                    <td> {{getSaldoPositivo(gerente) | currency}} </td>
+                    <td> {{getSaldoNegativo(gerente) | currency}} </td>
                 </tr>
             </tbody>
         </table>
