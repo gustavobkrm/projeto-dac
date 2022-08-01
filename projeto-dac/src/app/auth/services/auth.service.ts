@@ -123,7 +123,6 @@ export class AuthService implements OnInit{
 
   updateUser(user: User) {
     let users = this.usuariosCadastrados;
-    console.log(user);
     
     users.forEach((obj,index,array) => {
       if(obj.id == user.id){

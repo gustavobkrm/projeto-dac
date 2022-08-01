@@ -33,6 +33,7 @@ export class ExtratoComponent implements OnInit {
     if(array != []){
       this.operacoes = array;
     }
+    console.log(array);
   }
 
 }

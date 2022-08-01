@@ -14,11 +14,18 @@ export class ClienteService {
   }
 
   saque(valor : number, transferencia ?: boolean): Boolean{
-    console.log(this.cliente.conta?.historico);
-
     if(valor){
-      if(this.cliente.conta?.saldoConta && this.cliente.conta?.limite){
+      if(this.cliente.conta?.saldoConta){
+      if(this.cliente.conta?.limite){
         if(this.cliente.conta.saldoConta + this.cliente.conta.limite >= valor ){
+          if(!transferencia) this.cadastraOperacao("SAQUE",valor);
+          this.cliente.conta.saldoConta -= valor;
+          this.authService.usuarioLogado = this.cliente;
+          this.authService.updateUser(this.cliente);
+          return true;
+        }
+      }else{
+        if(this.cliente.conta.saldoConta >= valor ){
           if(!transferencia) this.cadastraOperacao("SAQUE",valor);
           this.cliente.conta.saldoConta -= valor;
           this.authService.usuarioLogado = this.cliente;
@@ -27,6 +34,7 @@ export class ClienteService {
         }
       }
     }
+  }
     return false;
   }
 
@@ -63,11 +71,17 @@ export class ClienteService {
   }
 
   verificaSaldo(valor : number): Boolean{
-    if(this.cliente.conta?.saldoConta && this.cliente.conta?.limite){
-      if(this.cliente.conta.saldoConta + this.cliente.conta.limite >= valor){
-        return true;
+    if(this.cliente.conta?.saldoConta){
+      if(this.cliente.conta?.limite){
+        if(this.cliente.conta.saldoConta + this.cliente.conta.limite >= valor){
+          return true;
+        }
+        }else{
+          if(this.cliente.conta.saldoConta >= valor){
+            return true;
+          } 
+        }
       }
-    }
     return false;
   }
 
@@ -76,7 +90,9 @@ export class ClienteService {
     if(tipo == "TRANSFERENCIA"){
       if(destino && destino.conta){
         operacao = new Operacao(tipo,valor,destino.conta.conta,this.cliente.conta?.conta);
+        console.log(operacao);
         destino?.conta?.historico?.push(operacao);
+        this.cliente.conta?.historico?.push(operacao);
         this.authService.updateUser(destino);
       }     
     }else{
@@ -90,6 +106,7 @@ export class ClienteService {
         this.cliente.conta?.historico?.push(operacao);
       }
     }
+    console.log(this.cliente.conta?.historico);
   }
 
   filtroData(dataInicio : string, dataFim : string): Operacao[]{
@@ -98,10 +115,13 @@ export class ClienteService {
         operacoes = this.cliente.conta?.historico.filter( operacao => { 
           let data;
           let Inicio = new Date(Number(dataInicio.slice(4,8)),Number(dataInicio.slice(2,4)),Number(dataInicio.slice(0,2)));
-          let Fim = new Date(Number(dataFim.slice(4,8)),Number(dataFim.slice(2,4)),Number(dataFim.slice(0,2)));
+          let Fim = new Date(Number(dataFim.slice(4,8)),Number(dataFim.slice(2,4)),Number(dataFim.slice(0,2)),23,59,59);
           if(operacao.dataHoraMovimentacao){
             data = new Date(operacao.dataHoraMovimentacao);
-            if( data >= Inicio && data <= Fim ){
+            console.log(Inicio);
+            console.log(Fim);
+            console.log(data);
+            if( (data.getTime() >= Inicio.getTime()) && (data.getTime() <= Fim.getTime()) ){
             return true;
             }
           }
