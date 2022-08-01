@@ -33,8 +33,8 @@ export class GerenteService {
     this.authService.updateUser(this.gerente);
   }
 
-  buscarCliente(cpf: string): Cliente | null{
-    return this.authService.getClienteByCPF(cpf);
+  buscarCliente(cpf: string): Cliente | undefined{ 
+    return this.gerente.clientes?.find(cliente => cliente.cpf == cpf);
   }
 
   retornaClientes(): Cliente[] | undefined {

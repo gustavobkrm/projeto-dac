@@ -118,10 +118,6 @@ export class ClienteService {
           let Fim = new Date(Number(dataFim.slice(4,8)),Number(dataFim.slice(2,4))-1,Number(dataFim.slice(0,2)),23,59,59,0);
           if(operacao.dataHoraMovimentacao){
             data = new Date(operacao.dataHoraMovimentacao);
-            console.log("Inicio-"+Inicio);
-            console.log("Fim-"+Fim);
-            console.log("Operacao-"+data); 
-                    
             if( data.getTime() >= Inicio.getTime() && data.getTime() <= Fim.getTime()){
                 return true;
             }

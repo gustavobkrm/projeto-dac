@@ -49,14 +49,20 @@ export class CreateAccountService {
   }
 
   insert(cliente : Cliente) : void {
-    
-    cliente.id = new Date().getTime();
-    cliente.perfil = 'CLIENTE';
-    cliente = this.insertConta(cliente);
-    console.log(cliente);
-    //cliente.conta = metodo da Conta;
-    
-    this.authService.adicionarUsuarioPendente(cliente);
+    if(cliente.cpf && cliente.email){
+    if(!this.authService.getClienteByCPF(cliente.cpf)){
+      if(!this.authService.getClienteByEmail(cliente.email)){
+        cliente.id = new Date().getTime();
+        cliente.perfil = 'CLIENTE';
+        cliente = this.insertConta(cliente);
+        console.log(cliente);
+        this.authService.adicionarUsuarioPendente(cliente);
+      }else{
+        throw("Email ja esta sendo utilizado");
+      }
+    }else{
+      throw("CPF ja esta sendo utilizado");
+    }}
   }
 
   consultaCEP(cep : string) {
