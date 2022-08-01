@@ -12,7 +12,6 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let cliente of clientes" class="position-relative">-->
                 <tr *ngFor="let cliente of clientes" class="position-relative">
                     <td> {{cliente.cpf! | mask: "000.000.000-00"}} </td>
                     <td> {{cliente.nome}} </td>
