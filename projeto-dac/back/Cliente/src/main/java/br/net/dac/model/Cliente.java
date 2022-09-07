@@ -1,4 +1,4 @@
-package br.net.gustavo.model;
+package br.net.dac.model;
 
 import java.io.Serializable;
 
@@ -20,31 +20,65 @@ public class Cliente implements Serializable {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "senha")
+	private String senha;
+	
 	@Column(name = "cpf")
 	private String cpf;
 	
 	@Column(name = "aprovado")
 	private String aprovado;
 	
+	@Column(name = "salario")
+	private double salario;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "conta", referencedColumnName = "id")	
-	private ContaDTO conta;
+	private Conta conta;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco", referencedColumnName = "id")	
-	private EnderecoDTO endereco;
+	private Endereco endereco;
 
-	public Cliente(int id, String nome, String email, String cpf, String aprovado, ContaDTO conta,
-			EnderecoDTO endereco) {
+	public Cliente(int id, String nome, String email, String senha, String cpf, String aprovado, double salario, Conta conta,
+			Endereco endereco) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.senha = senha;
 		this.cpf = cpf;
 		this.aprovado = aprovado;
+		this.salario = salario;
 		this.conta = conta;
 		this.endereco = endereco;
 	}
+
+	
+	public double getSalario() {
+		return salario;
+	}
+
+
+	public void setSalario(double salario) {
+		this.salario = salario;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+
+	public static Long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 
 	public int getId() {
 		return id;
@@ -86,19 +120,19 @@ public class Cliente implements Serializable {
 		this.aprovado = aprovado;
 	}
 
-	public ContaDTO getConta() {
+	public Conta getConta() {
 		return conta;
 	}
 
-	public void setConta(ContaDTO conta) {
+	public void setConta(Conta conta) {
 		this.conta = conta;
 	}
 
-	public EnderecoDTO getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(EnderecoDTO endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 

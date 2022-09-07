@@ -1,4 +1,4 @@
-package br.net.gustavo.model;
+package br.net.dac.model;
 
 import java.io.Serializable;
 
@@ -7,23 +7,38 @@ public class ClienteDTO implements Serializable {
 	private int id;
 	private String nome;
 	private String email;
+	private String senha;
 	private String cpf;
 	private EnderecoDTO endereco;
 	private String aprovado;
 	private ContaDTO conta;
 	private double salario;
 
-	public ClienteDTO(int id, String nome, String email, String cpf, EnderecoDTO endereco, String aprovado, ContaDTO conta, double salario) {
+	public ClienteDTO(int id, String nome, String email, String senha, String cpf, EnderecoDTO endereco, String aprovado, ContaDTO conta, double salario) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.senha = senha;
 		this.cpf = cpf;
 		this.endereco = endereco;
 		this.aprovado = aprovado;
 		this.conta = conta;
 		this.salario = salario;
 	}
+
+
+	
+	public String getSenha() {
+		return senha;
+	}
+
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
 
 
 	public int getId() {

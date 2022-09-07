@@ -1,38 +1,19 @@
-package br.net.gustavo.model;
+package br.net.dac.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class ContaDTO implements Serializable {
 
-@Entity
-@Table(name = "tb_conta")
-public class Conta {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int id;
-	
-	@Column(name = "conta")
+	private Long id;
 	private int conta;
-	
-	@Column(name = "criacao")
 	private Date criacao;
-	
-	@Column(name = "limite")
 	private double limite;
-	
-	@Column(name = "historico")
 	private String historico;
-	
-	@Column(name = "saldoConta")
 	private double saldoConta;
-
-	public Conta(int id, int conta, Date criacao, double limite, String historico, double saldoConta) {
+	
+	public ContaDTO(Long id, int conta, Date criacao, double limite, String historico, double saldoConta) {
 		super();
 		this.id = id;
 		this.conta = conta;
@@ -41,12 +22,18 @@ public class Conta {
 		this.historico = historico;
 		this.saldoConta = saldoConta;
 	}
-
-	public int getId() {
+	public double getSaldoConta() {
+		return saldoConta;
+	}
+	public void setSaldoConta(double saldoConta) {
+		this.saldoConta = saldoConta;
+	}
+	
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -82,13 +69,4 @@ public class Conta {
 		this.historico = historico;
 	}
 
-	public double getSaldoConta() {
-		return saldoConta;
-	}
-
-	public void setSaldoConta(double saldoConta) {
-		this.saldoConta = saldoConta;
-	}
-	
-	
 }

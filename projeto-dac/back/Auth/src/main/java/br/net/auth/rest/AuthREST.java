@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,26 +24,26 @@ public class AuthREST implements Serializable{
 
 
 	@PostMapping("/login")
-	UsuarioDTO auth (@RequestBody UsuarioDTO usuario) {
+	ResponseEntity<Usuario> auth (@RequestBody UsuarioDTO usuario) {
 		repo.save(mapper.map(usuario, Usuario.class));
 		
 		String email = usuario.getEmail();
 		String senha = usuario.getSenha();
 		
 		if(email == null || senha == null) {
-			return null;
+			return ResponseEntity.status(401).build();
 		}
 		
 		Usuario usuEntity = repo.findByEmailAndSenha(email, senha);
 		if (usuEntity == null) {
-			return null;
+			return ResponseEntity.status(401).build();
 		}
 		
 		if (usuEntity.getEmail() == usuario.getEmail() && usuEntity.getSenha() == usuario.getSenha()) {
-			return mapper.map(usuEntity,  UsuarioDTO.class);
+			return ResponseEntity.ok().body(usuEntity);
 		}
 		else {
-			return null;
+			return ResponseEntity.status(401).build();
 		}
 		
 	}
