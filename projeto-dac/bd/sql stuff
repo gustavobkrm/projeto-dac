@@ -1,0 +1,6 @@
+create table tb_usuarios(
+id BIGINT NOT NULL PRIMARY KEY,
+nome varchar(200),
+email varchar(200),
+senha varchar(200),
+perfil varchar(200));
