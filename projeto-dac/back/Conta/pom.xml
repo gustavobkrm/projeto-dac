@@ -8,10 +8,10 @@
 		<version>2.7.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.net.gustavo</groupId>
-	<artifactId>back</artifactId>
+	<groupId>br.net.conta</groupId>
+	<artifactId>Conta</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>back</name>
+	<name>Conta</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -45,6 +45,7 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>

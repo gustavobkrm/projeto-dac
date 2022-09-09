@@ -1,3 +1,4 @@
+// CRIAR ESQUEMA dac 
 create table tb_usuarios(
 id BIGINT NOT NULL PRIMARY KEY,
 nome varchar(200),
@@ -5,6 +6,9 @@ email varchar(200),
 senha varchar(200),
 perfil varchar(200));
 
+
+
+//CRIAR ESQUEMA dac_clientes
 create table tb_clientes(
 id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nome varchar(200),
@@ -15,14 +19,6 @@ aprovado varchar(15),
 salario double,
 conta int,
 endereco int);
-
-create table tb_conta(
-id int PRIMARY KEY,
-conta int , 
-criacao date, 
-limite double,
-historico varchar(200),
-saldo_conta double);
 
 create table tb_endereco(
 id int PRIMARY KEY,
@@ -36,11 +32,21 @@ cidade varchar(200),
 estado varchar(2)
 );
 
+/CRIAR ESQUEMA dac_contas
+create table tb_conta(
+id int PRIMARY KEY,
+conta int , 
+criacao date, 
+limite double,
+historico varchar(200),
+saldo_conta double);
+
+
 alter table tb_clientes 
-add constraint foreign key(conta) references tb_conta(id);
+add constraint foreign key(conta) references dac_contas.tb_conta(id);
 
 alter table tb_clientes 
 add constraint foreign key(endereco) references tb_endereco(id)
 
-insert into tb_clientes values (1, "teste", "teste@teste.com", "teste", "09809809809", "aprovado", 2332.32, null, null)
-select * from tb_clientes
+insert into tb_clientes values (1, "teste", "teste@teste.com", "teste", "09809809809", "aprovado", 2332.32, 1, null)
+insert into tb_conta values (1, 123, now(), 2000, 'teste', 1233.33)
