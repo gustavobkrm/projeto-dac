@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ClienteDTO implements Serializable {
 
-	private int id;
+	private Long id;
 	private String nome;
 	private String email;
 	private String senha;
@@ -14,7 +14,7 @@ public class ClienteDTO implements Serializable {
 	private ContaDTO conta;
 	private double salario;
 
-	public ClienteDTO(int id, String nome, String email, String senha, String cpf, EnderecoDTO endereco, String aprovado, ContaDTO conta, double salario) {
+	public ClienteDTO(Long id, String nome, String email, String senha, String cpf, EnderecoDTO endereco, String aprovado, ContaDTO conta, double salario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -28,7 +28,7 @@ public class ClienteDTO implements Serializable {
 	}
 
 
-	
+
 	public String getSenha() {
 		return senha;
 	}
@@ -41,11 +41,11 @@ public class ClienteDTO implements Serializable {
 
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

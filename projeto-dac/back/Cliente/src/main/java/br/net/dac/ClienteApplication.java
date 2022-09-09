@@ -13,7 +13,7 @@ public class ClienteApplication {
 	}
 
 	@Bean
-	public ModelMapper modelMapper() {
+	ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
 }

@@ -12,7 +12,7 @@ public class EnderecoDTO implements Serializable{
     private String bairro;
     private String cidade;
     private String estado;
-    
+
 	public EnderecoDTO(int id, String tipo, String logradouro, int numero, String complemento, String cep, String bairro,
 			String cidade, String estado) {
 		super();
@@ -80,5 +80,5 @@ public class EnderecoDTO implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-    
+
 }

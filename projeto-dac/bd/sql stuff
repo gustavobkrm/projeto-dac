@@ -4,3 +4,43 @@ nome varchar(200),
 email varchar(200),
 senha varchar(200),
 perfil varchar(200));
+
+create table tb_clientes(
+id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+nome varchar(200),
+email varchar(200),
+senha varchar(200),
+cpf varchar(11),
+aprovado varchar(15),
+salario double,
+conta int,
+endereco int);
+
+create table tb_conta(
+id int PRIMARY KEY,
+conta int , 
+criacao date, 
+limite double,
+historico varchar(200),
+saldo_conta double);
+
+create table tb_endereco(
+id int PRIMARY KEY,
+numero int,
+tipo varchar(20),
+logradouro varchar(200),
+complemento varchar(200),
+cep varchar(8),
+bairro varchar(200),
+cidade varchar(200),
+estado varchar(2)
+);
+
+alter table tb_clientes 
+add constraint foreign key(conta) references tb_conta(id);
+
+alter table tb_clientes 
+add constraint foreign key(endereco) references tb_endereco(id)
+
+insert into tb_clientes values (1, "teste", "teste@teste.com", "teste", "09809809809", "aprovado", 2332.32, null, null)
+select * from tb_clientes

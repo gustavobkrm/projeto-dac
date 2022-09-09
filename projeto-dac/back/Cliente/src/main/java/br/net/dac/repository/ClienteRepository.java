@@ -7,8 +7,7 @@ import org.springframework.data.repository.query.Param;
 import br.net.dac.model.Cliente;
 
 public interface ClienteRepository extends JpaRepository<Cliente, Long>{
-	public Cliente findByLogin(String login);
-	@Query("from Usuario where email = :login and senha = :senha")
-	public Cliente findByEmailAndSenha(@Param("login") String login, @Param("senha") String senha);
+	@Query("from Cliente where email = :email and senha = :senha and id = :id")
+	public Cliente findByEmailAndSenhaAndId(@Param("email") String email, @Param("senha") String senha, @Param("id") Long id);
 
 }

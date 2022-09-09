@@ -16,20 +16,20 @@ public class Conta {
 	@GeneratedValue
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "conta")
 	private int conta;
-	
+
 	@Column(name = "criacao")
 	private Date criacao;
-	
+
 	@Column(name = "limite")
 	private double limite;
-	
+
 	@Column(name = "historico")
 	private String historico;
-	
-	@Column(name = "saldoConta")
+
+	@Column(name = "saldo_conta")
 	private double saldoConta;
 
 	public Conta(Long id, int conta, Date criacao, double limite, String historico, double saldoConta) {
@@ -41,6 +41,12 @@ public class Conta {
 		this.historico = historico;
 		this.saldoConta = saldoConta;
 	}
+
+
+	public Conta() {
+		super();
+	}
+
 
 	public Long getId() {
 		return id;
@@ -89,6 +95,6 @@ public class Conta {
 	public void setSaldoConta(double saldoConta) {
 		this.saldoConta = saldoConta;
 	}
-	
-	
+
+
 }

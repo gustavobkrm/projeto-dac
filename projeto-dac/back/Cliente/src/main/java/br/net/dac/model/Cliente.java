@@ -2,45 +2,55 @@ package br.net.dac.model;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "tb_cliente")
+@Table(name = "tb_clientes")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Cliente implements Serializable {
 	private static final Long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private int id;
-	
+	private Long id;
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "email")
 	private String email;
-	
+
 	@Column(name = "senha")
 	private String senha;
-	
+
 	@Column(name = "cpf")
 	private String cpf;
-	
+
 	@Column(name = "aprovado")
 	private String aprovado;
-	
+
 	@Column(name = "salario")
 	private double salario;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "conta", referencedColumnName = "id")	
+	@JoinColumn(name = "conta", referencedColumnName = "id")
 	private Conta conta;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "endereco", referencedColumnName = "id")	
+	@JoinColumn(name = "endereco", referencedColumnName = "id")
 	private Endereco endereco;
 
-	public Cliente(int id, String nome, String email, String senha, String cpf, String aprovado, double salario, Conta conta,
+	public Cliente(Long id, String nome, String email, String senha, String cpf, String aprovado, double salario, Conta conta,
 			Endereco endereco) {
 		super();
 		this.id = id;
@@ -54,7 +64,12 @@ public class Cliente implements Serializable {
 		this.endereco = endereco;
 	}
 
-	
+
+	public Cliente() {
+		super();
+	}
+
+
 	public double getSalario() {
 		return salario;
 	}
@@ -75,16 +90,11 @@ public class Cliente implements Serializable {
 	}
 
 
-	public static Long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -136,5 +146,5 @@ public class Cliente implements Serializable {
 		this.endereco = endereco;
 	}
 
-	
+
 }

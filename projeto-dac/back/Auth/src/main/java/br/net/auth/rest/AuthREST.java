@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.net.auth.model.Usuario;
 import br.net.auth.model.UsuarioDTO;
-import repository.UsuarioRepository;
+import br.net.auth.repository.UsuarioRepository;
 
 @CrossOrigin
 @RestController
 public class AuthREST implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	@Autowired
 	private UsuarioRepository repo;
 	@Autowired
@@ -25,26 +27,26 @@ public class AuthREST implements Serializable{
 
 	@PostMapping("/login")
 	ResponseEntity<Usuario> auth (@RequestBody UsuarioDTO usuario) {
-		repo.save(mapper.map(usuario, Usuario.class));
-		
 		String email = usuario.getEmail();
 		String senha = usuario.getSenha();
-		
+		Long id = usuario.getId();
+
+
 		if(email == null || senha == null) {
 			return ResponseEntity.status(401).build();
 		}
-		
-		Usuario usuEntity = repo.findByEmailAndSenha(email, senha);
+
+		Usuario usuEntity = repo.findByEmailAndSenhaAndId(email, senha, id);
 		if (usuEntity == null) {
 			return ResponseEntity.status(401).build();
 		}
-		
-		if (usuEntity.getEmail() == usuario.getEmail() && usuEntity.getSenha() == usuario.getSenha()) {
+
+		if (usuEntity.getEmail().equals(email) && usuEntity.getSenha().equals(senha) && usuEntity.getId().toString().equals(id.toString())) {
 			return ResponseEntity.ok().body(usuEntity);
 		}
 		else {
 			return ResponseEntity.status(401).build();
 		}
-		
+
 	}
 }

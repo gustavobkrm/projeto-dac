@@ -12,7 +12,7 @@ public class ContaDTO implements Serializable {
 	private double limite;
 	private String historico;
 	private double saldoConta;
-	
+
 	public ContaDTO(Long id, int conta, Date criacao, double limite, String historico, double saldoConta) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class ContaDTO implements Serializable {
 	public void setSaldoConta(double saldoConta) {
 		this.saldoConta = saldoConta;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
