@@ -8,7 +8,7 @@ perfil varchar(200));
 
 
 
-//CRIAR ESQUEMA dac_clientes
+//CRIAR ESQUEMA dac_cliente
 create table tb_clientes(
 id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 nome varchar(200),
@@ -32,7 +32,7 @@ cidade varchar(200),
 estado varchar(2)
 );
 
-/CRIAR ESQUEMA dac_contas
+//CRIAR ESQUEMA dac_contas
 create table tb_conta(
 id int PRIMARY KEY,
 conta int , 
@@ -43,10 +43,22 @@ saldo_conta double);
 
 
 alter table tb_clientes 
-add constraint foreign key(conta) references dac_contas.tb_conta(id);
-
-alter table tb_clientes 
 add constraint foreign key(endereco) references tb_endereco(id)
 
 insert into tb_clientes values (1, "teste", "teste@teste.com", "teste", "09809809809", "aprovado", 2332.32, 1, null)
 insert into tb_conta values (1, 123, now(), 2000, 'teste', 1233.33)
+
+
+docker run --name auth-docker -p 3305:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run --name cliente-docker -p 3307:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run --name gerente-docker -p 3308:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+docker run --name conta-docker -p 3309:3306 -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+mysql -u root -p
+CREATE DATABASE clientedatabase;
+CREATE USER 'admin'@'%' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON authdatabase.* TO 'admin'@'%';
+
+
+DEFAULT SCHEMA authdatabase
+localhost + porta do docker
