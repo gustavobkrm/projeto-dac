@@ -22,7 +22,27 @@ public class Gerente {
 		
 		@Column(name = "cpf")
 		private String cpf;
+		 
+		@Column(name = "nome")
+		private String nome;
+		 
 
+
+		public Gerente(Long id, String email, String cpf, String nome) {
+			super();
+			this.id = id;
+			this.email = email;
+			this.cpf = cpf;
+			this.nome = nome;
+		}
+
+		public String getNome() {
+			return nome;
+		}
+
+		public void setNome(String nome) {
+			this.nome = nome;
+		}
 
 		public Long getId() {
 			return id;

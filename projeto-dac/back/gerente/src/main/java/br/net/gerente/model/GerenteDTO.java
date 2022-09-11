@@ -4,18 +4,29 @@ import java.util.Date;
 
 public class GerenteDTO {
 	private Long id;
+	private String nome;
 	private String email;
 	private String cpf;
 
-	public GerenteDTO(Long id, String email, String cpf) {
+	public GerenteDTO(Long id, String nome,String email, String cpf) {
 		super();
 		this.id = id;
+		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
 	}
 
 	public GerenteDTO() {
 		super();
+	}
+
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public Long getId() {
