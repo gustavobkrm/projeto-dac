@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.net.conta</groupId>
-	<artifactId>Conta</artifactId>
+	<artifactId>conta</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Conta</name>
+	<name>conta</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect"/>
 	</properties>
 	<dependencies>
 		<dependency>

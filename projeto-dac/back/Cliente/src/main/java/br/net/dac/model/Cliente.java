@@ -42,15 +42,14 @@ public class Cliente implements Serializable {
 	@Column(name = "salario")
 	private double salario;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "conta", referencedColumnName = "id")
-	private Conta conta;
+	@Column(name = "conta")
+	private Long conta;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco", referencedColumnName = "id")
 	private Endereco endereco;
 
-	public Cliente(Long id, String nome, String email, String senha, String cpf, String aprovado, double salario, Conta conta,
+	public Cliente(Long id, String nome, String email, String senha, String cpf, String aprovado, double salario, Long conta,
 			Endereco endereco) {
 		super();
 		this.id = id;
@@ -130,11 +129,11 @@ public class Cliente implements Serializable {
 		this.aprovado = aprovado;
 	}
 
-	public Conta getConta() {
+	public Long getLong() {
 		return conta;
 	}
 
-	public void setConta(Conta conta) {
+	public void setLong(Long conta) {
 		this.conta = conta;
 	}
 

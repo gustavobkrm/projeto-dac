@@ -11,10 +11,10 @@ public class ClienteDTO implements Serializable {
 	private String cpf;
 	private EnderecoDTO endereco;
 	private String aprovado;
-	private ContaDTO conta;
+	private Long conta;
 	private double salario;
 
-	public ClienteDTO(Long id, String nome, String email, String senha, String cpf, EnderecoDTO endereco, String aprovado, ContaDTO conta, double salario) {
+	public ClienteDTO(Long id, String nome, String email, String senha, String cpf, EnderecoDTO endereco, String aprovado, Long conta, double salario) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -57,11 +57,11 @@ public class ClienteDTO implements Serializable {
 		this.aprovado = aprovado;
 	}
 
-	public ContaDTO getConta() {
+	public Long getConta() {
 		return conta;
 	}
 
-	public void setConta(ContaDTO conta) {
+	public void setConta(Long conta) {
 		this.conta = conta;
 	}
 

@@ -23,14 +23,13 @@ public class ContaREST {
 	private ContaRepository repo;
 	@Autowired
 	private ModelMapper mapper;
-	
+
 	@GetMapping("/contas/{id}")
 	ResponseEntity<Conta> getContaById(@PathVariable("id") Long id) {
 		Conta c = repo.getReferenceById(id);
 		return ResponseEntity.ok().body(c);
 	}
 
-	// criar conta
 	@PostMapping("/contas")
 	ResponseEntity<Conta> insertConta(@RequestBody ContaDTO conta) {
 		repo.save(mapper.map(conta,  Conta.class));
@@ -51,21 +50,22 @@ public class ContaREST {
 		repo.deleteById(id);
 		return ResponseEntity.ok().body(c);
 	}
-	
-	// passar o id da conta? 
+
+	// passar o id da conta?
 	@GetMapping("/contas/{id}/consultarsaldo")
 	ResponseEntity<Double> saldoConta(@PathVariable("id") Long id){
 		Conta c = repo.getReferenceById(id);
 		return ResponseEntity.ok().body(c.getSaldoConta());
 	}
-	
+
 	@PutMapping("/contas/deposito/{id}")
-	ResponseEntity<Conta> setSaldoConta(@PathVariable("id") Long id, @RequestBody ContaDTO conta){
+	ResponseEntity<Conta> setSaldoConta(@PathVariable("id") Long id, @RequestBody String deposito){
 		Conta c = repo.getReferenceById(id);
-		c.setSaldoConta(conta.getSaldoConta());
+		double depositoConvertido = Double.parseDouble(deposito);
+		c.setSaldoConta(c.getSaldoConta() + depositoConvertido);
 		repo.save(c);
 		return ResponseEntity.ok().body(c);
 	}
-	
+
 	//saque? extrato?
 }

@@ -18,15 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.net.dac.model.Cliente;
 import br.net.dac.model.ClienteDTO;
 import br.net.dac.repository.ClienteRepository;
-import br.net.dac.repository.ContaRepository;
 
 @CrossOrigin
 @RestController
 public class ClienteREST {
 	@Autowired
 	private ClienteRepository repo;
-	@Autowired
-	private ContaRepository repoConta;
+
 	@Autowired
 	private ModelMapper mapper;
 
