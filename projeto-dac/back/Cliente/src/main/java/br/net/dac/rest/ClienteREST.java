@@ -6,6 +6,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,12 @@ public class ClienteREST {
 
 	@PostMapping("/clientes")
 	ResponseEntity<Cliente> insertClient(@RequestBody ClienteDTO cliente) {
+		BCryptPasswordEncoder criptografar = new BCryptPasswordEncoder();
+		String senhaEncripto = criptografar.encode(cliente.getSenha());
+		cliente.setSenha(senhaEncripto);
+		
 		repo.save(mapper.map(cliente,  Cliente.class));
+
 		Cliente cli = repo.findByEmailAndSenhaAndId(cliente.getEmail(), cliente.getSenha(), cliente.getId());
 		return ResponseEntity.ok().body(cli);
 	}
@@ -53,6 +59,9 @@ public class ClienteREST {
 	@PutMapping("/clientes/{id}")
 	ResponseEntity<Cliente>  updateClient(@PathVariable("id") Long id, @RequestBody ClienteDTO cliente) {
 		Cliente c = repo.getReferenceById(id);
+		BCryptPasswordEncoder criptografar = new BCryptPasswordEncoder();
+		String senhaEncripto = criptografar.encode(cliente.getSenha());
+		c.setSenha(senhaEncripto);
 		repo.save(mapper.map(cliente,  Cliente.class));
 		return ResponseEntity.ok().body(c);
 	}

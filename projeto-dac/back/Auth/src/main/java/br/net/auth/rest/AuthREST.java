@@ -5,6 +5,7 @@ import java.io.Serializable;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,11 +38,14 @@ public class AuthREST implements Serializable{
 		}
 
 		Usuario usuEntity = repo.findByEmailAndSenhaAndId(email, senha, id);
+		BCryptPasswordEncoder criptografar = new BCryptPasswordEncoder();
+		
+		String senhaEncripto = criptografar.encode(usuario.getSenha());
 		if (usuEntity == null) {
 			return ResponseEntity.status(401).build();
 		}
 
-		if (usuEntity.getEmail().equals(email) && usuEntity.getSenha().equals(senha) && usuEntity.getId().toString().equals(id.toString())) {
+		if (usuEntity.getEmail().equals(email) && usuEntity.getSenha().equals(senhaEncripto) && usuEntity.getId().toString().equals(id.toString())) {
 			return ResponseEntity.ok().body(usuEntity);
 		}
 		else {
